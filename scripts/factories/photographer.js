@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-function photographerFactory(data) {
+export function photographerFactory(data) {
   const { id, name, portrait, city, tagline, price } = data;
 
   const picture = `assets/photographers/${portrait}`;

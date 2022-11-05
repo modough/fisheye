@@ -6,4 +6,5 @@ fetch(`/data/photographers.json/${elementId}`)
     displayElement.forEach((elmt) => {
       document.querySelector(".avatar-img").textContent = elmt.portrait;
     });
+    console.log(elmt.portrait);
   });

@@ -5,17 +5,16 @@ async function getPhotographers() {
   // Penser à remplacer par les données récupérées dans le json
   return (
     fetch("data/photographers.json")
-      .then((res) => res.json())
-      .then((res) =>{
-        const photographers = res.photographers;
-        const media = res.media;
-        return {
-            photographers,
-            media
-        }
-      })
-      // eslint-disable-next-line no-console
-      .catch((err) => console.log(err))
+    .then((res) => res.json())
+    .then((res) =>{
+      const photographers = res.photographers;
+      const media = res.media;
+      return {
+          photographers,
+          media
+      }
+    })
+    .catch((err) => console.log(err))
   );
 }
 

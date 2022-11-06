@@ -1,20 +1,54 @@
+@import url("style.css");
 body {
   position: relative;
+}
+.logo {
+  height: 50px;
+  margin-left: 100px;
 }
 #contact_modal {
   display: none;
 }
-
-.photograph-header {
+.photograph-header > div {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background-color: #fafafa;
   height: 300px;
   margin: 0 100px;
+  padding: 0 50px;
+  border-radius: 5px;
 }
-
+.photograph-header img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+}
+.contact-userInfo {
+  display: flex;
+  flex-direction: column;
+}
+.contact-userInfo h2 {
+  font-size: 64px;
+  color: #d3573c;
+  margin: 0;
+}
+.contact-userInfo .location {
+  display: flex;
+  flex-direction: row;
+  font-size: 24px;
+}
+.contact-userInfo .location h3 {
+  color: #d3573c;
+  margin: 0;
+}
+.contact-userInfo .location .country {
+  padding-left: 3px;
+}
+.contact-userInfo p {
+  font-size: 18px;
+}
 .contact_button {
   font-size: 20px;
   font-weight: bold;
@@ -28,6 +62,50 @@ body {
   cursor: pointer;
 }
 
+.photograph-porfolio {
+  margin: 50px 100px;
+}
+.trierDiv label {
+  font-weight: 700;
+  padding-right: 10px;
+  font-size: 18px;
+  border-radius: 5px;
+}
+.trierDiv select {
+  padding: 5px 30px;
+  background-color: #901c1c;
+  color: #fafafa;
+  border: none;
+}
+.photos {
+  padding-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+}
+
+.photoCard img {
+  width: 350px;
+  height: 300px;
+  border-radius: 5px;
+}
+.photoCard img:hover {
+  scale: 1.1;
+  transition: 0.5s ease-in-out;
+}
+
+.bottomCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2px;
+  color: #901c1c;
+}
+.number-of-likes {
+  margin-right: 5px;
+}
 .modal {
   border-radius: 5px;
   background-color: #db8876;

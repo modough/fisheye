@@ -71,13 +71,14 @@ body {
   font-weight: 700;
   padding-right: 10px;
   font-size: 18px;
-  border-radius: 5px;
 }
 .trierDiv select {
-  padding: 5px 30px;
+  padding: 10px 40px;
   background-color: #901c1c;
   color: #fafafa;
+
   border: none;
+  border-radius: 5px;
 }
 .photos {
   padding-top: 30px;

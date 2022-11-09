@@ -1,8 +1,10 @@
 /* eslint-disable import/prefer-default-export */
 export default function professionalMedia (data) {
   const { title, image, likes, video, photographerId} = data;
+  
   const picture = `../assets/medias/${photographerId}/${image}`;
   const videos = `../assets/medias/${photographerId}/${video} `; 
+  console.log(photographerId)
 
   const getUserCardDOM = () => {
     const parent = document.createElement("div");

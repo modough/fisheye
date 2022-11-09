@@ -1,14 +1,20 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = {
-  mode: "production",
+  mode: "development",
   entry: {
     polyfill: "babel-polyfill",
-    app: "./scripts/pages/index.js"
+    app: "./scripts/pages/index.js",
   },
   output: {
     filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "dist")
+    path: path.resolve(__dirname, "dist"),
+    publicPath: "/dist/",
+  },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, "/"),
+    },
   },
   module: {
     rules: [
@@ -18,10 +24,10 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env"]
-          }
-        }
-      }
-    ]
-  }
+            presets: ["@babel/preset-env"],
+          },
+        },
+      },
+    ],
+  },
 };

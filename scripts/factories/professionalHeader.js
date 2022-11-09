@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 export default function photographerHeader (data) {
-  const { name, portrait, city, country, tagline,} = data;
+  const { name, portrait, city, country, tagline} = data;
 
   const picture = `assets/photographers/${portrait}`;
   

@@ -36,17 +36,17 @@ const displayPhotographPageHeader = () => {
   
 };
 
-const { media } = await getPhotographers(photographerId);
+const { media } = await getPhotographers();
 console.log(media);
 const displayPhotographPageMedia = () => {
   const parentDiv = document.querySelector(".photos");
-  const concernedPhotographer = media.filter((elmt) => {
-    elmt.id === parseInt(photographerId)
+  const singlePhotographer = media.filter((elmt) => {
+    elmt.photographerId === parseInt(photographerId, 10)
   });
   
   // partie photograher media
   
-  const photographerModel = professionalMedia(concernedPhotographer);
+  const photographerModel = professionalMedia(singlePhotographer);
   const userCardDOM = photographerModel.getUserCardDOM();
   parentDiv.appendChild(userCardDOM);
   

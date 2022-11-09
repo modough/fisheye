@@ -1,4 +1,5 @@
-import photographerFactory from "../factories/professionalPage.js";
+import photographerHeader from "../factories/professionalHeader.js";
+import professionalMedia from "../factories/professionalMedias.js";
 import contactForm from "../utils/contactForm.js";
 
 async function getPhotographers() {
@@ -10,32 +11,53 @@ async function getPhotographers() {
       const photographers = res.photographers;
       const media = res.media;
       return {
-          photographers,
-          media
+        photographers,
+        media
       }
     })
     .catch((err) => console.log(err))
   );
-}
-
+};
+// function for display
 const photographerId = window.location.search.replace("?id=", "");
-const  {photographers}  = await getPhotographers();
-
-
-// page photographer
-async function init (){
+console.log(photographerId)
+const  { photographers }  = await getPhotographers();
+const displayPhotographPageHeader = () => {
   if(photographerId){
-    //const mediaWrapper = document.querySelector('.photographerMedia');
     const article = document.querySelector(".photograph-header");
-    const foundPhotographers = photographers.filter(x => x.id=== parseInt(photographerId, 10));
-    const foundPhotographer = foundPhotographers[0]
+    const foundPhotographers = photographers.filter(data => data.id === parseInt(photographerId));
+    const foundPhotographer = foundPhotographers[0];
 
     // partie photograher header
-    const photographerModel = photographerFactory(foundPhotographer);
+    const photographerModel = photographerHeader(foundPhotographer);
     const userCardDOM = photographerModel.getUserCardDOM();
     article.appendChild(userCardDOM)
-  }
-  return article;
-}
-init()
+  };
+  
+};
+
+const { media } = await getPhotographers(photographerId);
+console.log(media);
+const displayPhotographPageMedia = () => {
+  const parentDiv = document.querySelector(".photos");
+  const concernedPhotographer = media.filter((elmt) => {
+    elmt.id === parseInt(photographerId)
+  });
+  
+  // partie photograher media
+  
+  const photographerModel = professionalMedia(concernedPhotographer);
+  const userCardDOM = photographerModel.getUserCardDOM();
+  parentDiv.appendChild(userCardDOM);
+  
+};
+
+
+// display page photographer
+const init = async () => {
+  displayPhotographPageHeader();
+  displayPhotographPageMedia();
+};
+init();
+
 contactForm();

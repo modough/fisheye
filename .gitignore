@@ -1,3 +1,4 @@
 node_modules
 app.bundle.js
+app2.bundle.js
 polyfill.bundle.js

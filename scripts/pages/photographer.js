@@ -25,7 +25,7 @@ const  { photographers }  = await getPhotographers();
 const displayPhotographPageHeader = () => {
   if(photographerId){
     const article = document.querySelector(".photograph-header");
-    const foundPhotographers = photographers.filter(data => data.id === parseInt(photographerId));
+    const foundPhotographers = photographers.filter((data) => data.id === parseInt(photographerId));
     const foundPhotographer = foundPhotographers[0];
 
     // partie photograher header
@@ -38,17 +38,18 @@ const displayPhotographPageHeader = () => {
 
 const { media } = await getPhotographers();
 console.log(media);
-const displayPhotographPageMedia = () => {
+const displayPhotographPageMedia = (media) => {
   const parentDiv = document.querySelector(".photos");
-  const singlePhotographer = media.filter((elmt) => {
-    elmt.photographerId === parseInt(photographerId, 10)
+  parentDiv.innerHTML = "";
+  media.forEach((elmt) => {
+    const photographerModel = professionalMedia(elmt);
+    const userCardDOM = photographerModel.getUserCardDOM();
+    parentDiv.appendChild(userCardDOM);
   });
   
   // partie photograher media
   
-  const photographerModel = professionalMedia(singlePhotographer);
-  const userCardDOM = photographerModel.getUserCardDOM();
-  parentDiv.appendChild(userCardDOM);
+  
   
 };
 
@@ -56,7 +57,8 @@ const displayPhotographPageMedia = () => {
 // display page photographer
 const init = async () => {
   displayPhotographPageHeader();
-  displayPhotographPageMedia();
+  const medias =  await media.filter(media => media.photographerId == photographerId);
+  displayPhotographPageMedia(medias);
 };
 init();
 

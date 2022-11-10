@@ -5,6 +5,7 @@ module.exports = {
   entry: {
     polyfill: "babel-polyfill",
     app: "./scripts/pages/index.js",
+    app2: "./scripts/pages/photographer.js",
   },
   output: {
     filename: "[name].bundle.js",
@@ -15,6 +16,9 @@ module.exports = {
     static: {
       directory: path.join(__dirname, "/"),
     },
+  },
+  experiments: {
+    topLevelAwait: true
   },
   module: {
     rules: [

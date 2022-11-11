@@ -1,4 +1,5 @@
 @import url("style.css");
+
 body {
   position: relative;
 }
@@ -24,6 +25,7 @@ body {
   width: 250px;
   height: 250px;
   border-radius: 50%;
+  object-fit: cover;
 }
 .contact-userInfo {
   display: flex;
@@ -63,6 +65,9 @@ body {
   border-radius: 5px;
   cursor: pointer;
 }
+.contact_button:hover {
+  background-color: #d3573c;
+}
 
 .photograph-porfolio {
   margin: 50px 100px;
@@ -88,15 +93,26 @@ body {
   justify-content: center;
   gap: 100px;
 }
-
-.photoCard img {
+.divImgVideo {
+  display: flex;
+  flex-direction: column;
+}
+.divImgVideo img,
+.divImgVideo video {
   width: 350px;
   height: 300px;
   border-radius: 5px;
 }
-.photoCard img:hover {
+.divImgVideo img:hover {
   scale: 1.1;
   transition: 0.5s ease-in-out;
+}
+.divImgVideo video {
+  object-fit: cover;
+}
+.fa-play-circle {
+  padding-top: 10px;
+  font-size: 20px;
 }
 
 .bottomCard {
@@ -105,6 +121,9 @@ body {
   justify-content: space-between;
   padding: 0 2px;
   color: #901c1c;
+}
+.bottomCard h2 {
+  font-size: 17px;
 }
 .number-of-likes {
   margin-right: 5px;
@@ -170,4 +189,27 @@ form textarea {
   height: 126px;
   border: none;
   border-radius: 5px;
+}
+
+.priceAndLikes {
+  width: 376px;
+  height: 89px;
+  border-radius: 5px;
+  background-color: #db8876;
+  position: fixed;
+  right: 1%;
+  top: 89%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px;
+  font-size: 24px;
+  font-weight: 500;
+}
+.priceAndLikes .likes {
+  display: flex;
+  align-items: center;
+}
+.numberOfLikes {
+  margin-right: 5px;
 }

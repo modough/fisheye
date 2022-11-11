@@ -44,13 +44,9 @@ const displayPhotographPageMedia = (media) => {
   media.forEach((elmt) => {
     const photographerModel = professionalMedia(elmt);
     const userCardDOM = photographerModel.getUserCardDOM();
-    parentDiv.appendChild(userCardDOM);
+    parentDiv.insertAdjacentHTML("beforeend", userCardDOM);
   });
-  
-  // partie photograher media
-  
-  
-  
+   
 };
 
 

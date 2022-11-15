@@ -68,7 +68,9 @@ body {
 .contact_button:hover {
   background-color: #d3573c;
 }
-
+.contact_button.header_button {
+  margin-right: 50px;
+}
 .photograph-porfolio {
   margin: 50px 100px;
 }
@@ -93,6 +95,20 @@ body {
   justify-content: center;
   gap: 100px;
 }
+.photoCardLink {
+  position: relative;
+}
+
+.photoCardLink::after {
+  content: "";
+  position: absolute;
+  top: 45%;
+  left: 45%;
+
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 30px solid white;
+}
 .divImgVideo {
   display: flex;
   flex-direction: column;
@@ -103,13 +119,15 @@ body {
   height: 300px;
   border-radius: 5px;
 }
-.divImgVideo img:hover {
+.divImgVideo img:hover,
+.divImgVideo video:hover {
   scale: 1.1;
   transition: 0.5s ease-in-out;
 }
 .divImgVideo video {
   object-fit: cover;
 }
+
 .fa-play-circle {
   padding-top: 10px;
   font-size: 20px;
@@ -125,9 +143,7 @@ body {
 .bottomCard h2 {
   font-size: 17px;
 }
-.number-of-likes {
-  margin-right: 5px;
-}
+
 .modal {
   border-radius: 5px;
   background-color: #db8876;
@@ -138,8 +154,8 @@ body {
   justify-content: space-between;
   padding: 35px;
   margin: auto;
-  position: absolute;
-  top: 50px;
+  position: fixed;
+  top: 30px;
   left: 25%;
 }
 

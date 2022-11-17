@@ -1,231 +1,236 @@
-@import url("style.css");
+@import url('style.css');
 
 body {
-  position: relative;
+	position: relative;
 }
 .logo {
-  height: 50px;
-  margin-left: 100px;
+	height: 50px;
+	margin-left: 100px;
 }
 #contact_modal {
-  display: none;
+	display: none;
 }
 .photograph-header > div {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #fafafa;
-  height: 300px;
-  margin: 0 100px;
-  padding: 0 50px;
-  border-radius: 5px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #fafafa;
+	height: 300px;
+	margin: 0 100px;
+	padding: 0 50px;
+	border-radius: 5px;
 }
 .photograph-header img {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  object-fit: cover;
+	width: 250px;
+	height: 250px;
+	border-radius: 50%;
+	object-fit: cover;
 }
 .contact-userInfo {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 .contact-userInfo h2 {
-  font-size: 64px;
-  color: #d3573c;
-  margin: 0;
+	font-size: 64px;
+	color: #d3573c;
+	margin: 0;
 }
 .contact-userInfo .location {
-  display: flex;
-  flex-direction: row;
-  font-size: 24px;
+	display: flex;
+	flex-direction: row;
+	font-size: 24px;
 }
 .contact-userInfo .location h3 {
-  color: #d3573c;
-  margin: 0;
+	color: #d3573c;
+	margin: 0;
 }
 .contact-userInfo .location .country {
-  padding-left: 5px;
+	padding-left: 5px;
 }
 .contact-userInfo p {
-  font-size: 18px;
-  font-weight: 400;
-  color: #525252;
+	font-size: 18px;
+	font-weight: 400;
+	color: #525252;
 }
 .contact_button {
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-  padding: 11px;
-  width: 170px;
-  height: 70px;
-  border: none;
-  background-color: #901c1c;
-  border-radius: 5px;
-  cursor: pointer;
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+	padding: 11px;
+	width: 170px;
+	height: 70px;
+	border: none;
+	background-color: #901c1c;
+	border-radius: 5px;
+	cursor: pointer;
 }
 .contact_button:hover {
-  background-color: #d3573c;
+	background-color: #d3573c;
 }
 .contact_button.header_button {
-  margin-right: 50px;
+	margin-right: 50px;
 }
 .photograph-porfolio {
-  margin: 50px 100px;
+	margin: 50px 100px;
 }
 .trierDiv label {
-  font-weight: 700;
-  padding-right: 10px;
-  font-size: 18px;
+	font-weight: 700;
+	padding-right: 10px;
+	font-size: 18px;
 }
 .trierDiv select {
-  padding: 10px 40px;
-  background-color: #901c1c;
-  color: #fafafa;
+	padding: 10px 40px;
+	background-color: #901c1c;
+	color: #fafafa;
 
-  border: none;
-  border-radius: 5px;
+	border: none;
+	border-radius: 5px;
 }
 .photos {
-  padding-top: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 100px;
+	display: flex;
+	padding-top: 30px;
+
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 100px;
 }
 .photoCardLink {
-  position: relative;
+	position: relative;
 }
 
 .photoCardLink::after {
-  content: "";
-  position: absolute;
-  top: 45%;
-  left: 45%;
-
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
-  border-left: 30px solid white;
+	content: '';
+	position: absolute;
+	top: 45%;
+	left: 45%;
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;
+	border-left: 30px solid white;
 }
 .divImgVideo {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 .divImgVideo img,
 .divImgVideo video {
-  width: 350px;
-  height: 300px;
-  border-radius: 5px;
+	width: 350px;
+	height: 300px;
+	border-radius: 5px;
 }
 .divImgVideo img:hover,
 .divImgVideo video:hover {
-  scale: 1.1;
-  transition: 0.5s ease-in-out;
+	scale: 1.1;
+	transition: 0.5s ease-in-out;
 }
 .divImgVideo video {
-  object-fit: cover;
+	object-fit: cover;
 }
 
 .fa-play-circle {
-  padding-top: 10px;
-  font-size: 20px;
+	padding-top: 10px;
+	font-size: 20px;
 }
 
 .bottomCard {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2px;
-  color: #901c1c;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 2px;
+	color: #901c1c;
 }
 .bottomCard h2 {
-  font-size: 17px;
+	font-size: 17px;
+}
+.bottomCard span {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .modal {
-  border-radius: 5px;
-  background-color: #db8876;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 35px;
-  margin: auto;
-  position: fixed;
-  top: 30px;
-  left: 25%;
+	border-radius: 5px;
+	background-color: #db8876;
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	padding: 35px;
+	margin: auto;
+	position: fixed;
+	top: 30px;
+	left: 25%;
 }
 
 .modal header {
-  justify-content: space-between;
-  width: 100%;
+	justify-content: space-between;
+	width: 100%;
 }
 
 .modal header img {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .modal header h2 {
-  font-size: 64px;
-  font-weight: normal;
-  text-align: center;
+	font-size: 64px;
+	font-weight: normal;
+	text-align: center;
 }
 
 form {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: flex-start;
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	align-items: flex-start;
 }
 
 form label {
-  color: #312e2e;
-  font-size: 36px;
+	color: #312e2e;
+	font-size: 36px;
 }
 
 form div {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: self-start;
-  margin-bottom: 26px;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	align-items: self-start;
+	margin-bottom: 26px;
 }
 
 form input {
-  width: 100%;
-  height: 68px;
-  border: none;
-  border-radius: 5px;
+	width: 100%;
+	height: 68px;
+	border: none;
+	border-radius: 5px;
 }
 form textarea {
-  width: 100%;
-  height: 126px;
-  border: none;
-  border-radius: 5px;
+	width: 100%;
+	height: 126px;
+	border: none;
+	border-radius: 5px;
 }
 
 .priceAndLikes {
-  width: 376px;
-  height: 89px;
-  border-radius: 5px;
-  background-color: #db8876;
-  position: fixed;
-  right: 1%;
-  top: 89%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 50px;
-  font-size: 24px;
-  font-weight: 500;
+	width: 376px;
+	height: 89px;
+	border-radius: 5px;
+	background-color: #db8876;
+	position: fixed;
+	right: 1%;
+	top: 89%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 50px;
+	font-size: 24px;
+	font-weight: 500;
 }
 .priceAndLikes .likes {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 }
 .numberOfLikes {
-  margin-right: 5px;
+	margin-right: 5px;
 }

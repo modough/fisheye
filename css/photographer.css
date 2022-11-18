@@ -118,14 +118,12 @@ body {
 	width: 350px;
 	height: 300px;
 	border-radius: 5px;
+	object-fit: cover;
 }
 .divImgVideo img:hover,
 .divImgVideo video:hover {
 	scale: 1.1;
 	transition: 0.5s ease-in-out;
-}
-.divImgVideo video {
-	object-fit: cover;
 }
 
 .fa-play-circle {
@@ -159,7 +157,7 @@ body {
 	justify-content: space-between;
 	padding: 35px;
 	margin: auto;
-	position: fixed;
+	position: absolute;
 	top: 30px;
 	left: 25%;
 }
@@ -196,7 +194,6 @@ form div {
 	flex-direction: column;
 	width: 100%;
 	align-items: self-start;
-	margin-bottom: 26px;
 }
 
 form input {

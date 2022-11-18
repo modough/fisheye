@@ -35,9 +35,7 @@
         <p class="price">300€ / jour</p>
       </div>
     </main>
-    <div class="lightboxModal" id="lightboxModal">
-      <i class="closeLightbox fa fa-close"></i>
-    </div>
+   
     <div id="contact_modal">
 			<div class="modal">
 				<header>
@@ -45,22 +43,26 @@
           <p class="photographer-name"></p>
           <img class="closeModal-btn" src="assets/icons/close.svg" />
         </header>
-				<form>
-					<div>
+				<form id="form" action = "index.html" method="GET">
+					<div class="first">
 						<label for="first">Prénom</label>
 						<input type="text" id="first" name="first"/>
+            <p class="firtname-error"></p>
 					</div>
-					<div>
+					<div class="last">
 						<label for="last">Nom</label>
 						<input type="text" id="last" name="last"/>
+            <p class="lastname-error"></p>
 					</div>
-					<div>
+					<div class="email">
 						<label for="email">Email</label>
 						<input type="email" id="email" name="email"/>
+            <p class="email-error"></p>
 					</div>
-					<div>
+					<div class="message">
 						<label for="message">Message</label>
 						<textarea type="text" id="message" name="message" rows="4" cols="50"></textarea>
+            <p class="message-error"></p>
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>

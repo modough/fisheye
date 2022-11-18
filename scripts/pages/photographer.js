@@ -1,5 +1,6 @@
 import { professionalInfos, professionalMedias } from '../factories/medias.js';
 import contactForm from '../utils/contactForm.js';
+import { submitForm } from '../utils/contactFormValidation.js';
 import { fetchData } from '../utils/fetchdata.js';
 
 async function getPhotographers() {
@@ -34,8 +35,8 @@ const displayPhotographPageMedia = (media) => {
 	parentDiv.innerHTML = '';
 	media.forEach((elmt) => {
 		const photographerModel = professionalMedias(elmt);
-		const userCardDOM = photographerModel.getMediaCardDOM();
-		parentDiv.appendChild(userCardDOM);
+		const mediaCardDOM = photographerModel.getMediaCardDOM();
+		parentDiv.appendChild(mediaCardDOM);
 	});
 };
 
@@ -49,3 +50,4 @@ const init = async () => {
 };
 init();
 contactForm();
+submitForm();

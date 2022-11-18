@@ -4,7 +4,7 @@ export function professionalInfos(data) {
 	const picture = `assets/photographers/${portrait}`;
 
 	const getInfoCardDOM = () => {
-		const parent = document.createElement('div');
+		const parentDiv = document.createElement('div');
 		const locality = document.createElement('div');
 		const img = document.createElement('img');
 		const ville = document.createElement('h3');
@@ -28,10 +28,10 @@ export function professionalInfos(data) {
 		infos.appendChild(h2);
 		infos.appendChild(locality);
 		infos.appendChild(slogan);
-		parent.appendChild(infos);
-		parent.appendChild(btn);
-		parent.appendChild(img);
-		return parent;
+		parentDiv.appendChild(infos);
+		parentDiv.appendChild(btn);
+		parentDiv.appendChild(img);
+		return parentDiv;
 	};
 	return { getInfoCardDOM };
 }
@@ -42,25 +42,7 @@ export function professionalMedias(data) {
 	const img = `assets/medias/${photographerId}/${image}`;
 	const file = `assets/medias/${photographerId}/${video}`;
 
-	const getMediaCardDOM = () =>
-	/* `<div class="photoCard">
-      ${video
-		? `<div class="divImgVideo photoCardLink">
-              <video src="${file}"></video>
-      </div>`
-		: `<div class="divImgVideo">  
-            <img src="${img}">  
-      </div>`
-} 
-    <div class="bottomCard">
-        <h2>${title}</h2>
-        <span>
-          <span class="number-of-likes">${likes}</span>
-          <i class="fas fa-heart"></i>
-        </span>
-      </div>
-    </div>`; */
-	{
+	const getMediaCardDOM = () => {
 		const card = document.createElement('div');
 		card.className = 'photoCard';
 		const mediaDiv = document.createElement('div');
@@ -69,12 +51,12 @@ export function professionalMedias(data) {
 		videoFile.setAttribute('src', file);
 		const imageFile = document.createElement('img');
 		imageFile.setAttribute('src', img);
-		if (video) {
-			mediaDiv.appendChild(videoFile);
-			mediaDiv.className = 'divImgVideo photoCardLink';
-		} else {
-			mediaDiv.appendChild(imageFile);
-		}
+
+		video
+			? (mediaDiv.appendChild(videoFile),
+			  (mediaDiv.className = 'divImgVideo photoCardLink'))
+			: mediaDiv.appendChild(imageFile);
+
 		const infoDiv = document.createElement('div');
 		infoDiv.className = 'bottomCard';
 		const titre = document.createElement('h2');

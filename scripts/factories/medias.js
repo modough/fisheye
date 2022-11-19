@@ -11,6 +11,7 @@ export function professionalInfos(data) {
 		const pays = document.createElement('h3');
 		const slogan = document.createElement('p');
 		const h2 = document.createElement('h2');
+		document.querySelector('.photographer-name').textContent = name;
 		const btn = document.createElement('button');
 		const infos = document.createElement('div');
 		img.setAttribute('src', picture);
@@ -49,6 +50,7 @@ export function professionalMedias(data) {
 		mediaDiv.className = 'divImgVideo';
 		const videoFile = document.createElement('video');
 		videoFile.setAttribute('src', file);
+		videoFile.setAttribute('type', 'video/mp4');
 		const imageFile = document.createElement('img');
 		imageFile.setAttribute('src', img);
 

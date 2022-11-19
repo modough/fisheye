@@ -1,4 +1,3 @@
-import closeModal from './contactForm.js';
 const firstnameInput = document.getElementById('first');
 const lastnameInput = document.getElementById('last');
 const emailInput = document.getElementById('email');
@@ -9,28 +8,28 @@ export const setLettersRgxp = /^[a-zA-Z]+$/;
 export const setEmailRgxp =
 	/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-// error message function
-export const setErrorMsg = (elmt, errorMessage) => {
+// valid message function
+export const setErrorMsg = (elmt, validMessage) => {
 	const parent = elmt.parentElement;
 	if (parent.classList.contains('valid')) {
 		parent.classList.remove('valid');
 	}
 	parent.classList.add('error');
 	const pTag = parent.querySelector('p');
-	pTag.innerText = errorMessage;
+	pTag.innerText = validMessage;
 	pTag.style.color = '#f00';
 	pTag.style.fontSize = '15px';
 };
 
 // valid message function
-export const setValidMsg = (elmt, errorMessage) => {
+export const setValidMsg = (elmt, validMessage) => {
 	const parent = elmt.parentElement;
-	if (parent.classList.contains('error')) {
-		parent.classList.remove('error');
+	if (parent.classList.contains('valid')) {
+		parent.classList.remove('valid');
 	}
 	parent.classList.add('valid');
 	const pTag = parent.querySelector('p');
-	pTag.innerText = errorMessage;
+	pTag.innerText = validMessage;
 };
 
 // declare a generic function for most inputs validation
@@ -95,18 +94,28 @@ export const submitForm = () => {
 	const lastname = document.querySelector('.last');
 	const email = document.querySelector('.email');
 	const message = document.querySelector('.message');
-
 	form.addEventListener('submit', (e) => {
 		validate();
+		e.preventDefault();
+
+		console.log('-----------------------');
 		if (
-			firstname.classList.contains('error') ||
-			lastname.classList.contains('error') ||
-			email.classList.contains('error') ||
-			message.classList.contains('error')
+			firstname.classList.contains('valid') &&
+			lastname.classList.contains('valid') &&
+			email.classList.contains('valid') &&
+			message.classList.contains('valid')
 		) {
-			e.preventDefault();
-		} else {
-			closeModal();
+			console.log('Informations du formulaire.');
+			console.log('Prénom: ' + firstnameInput.value);
+			console.log('Nom: ' + lastnameInput.value);
+			console.log('Email: ' + emailInput.value);
+			console.log('Message: ' + messageInput.value);
+			const main = document.getElementById('main');
+			main.style.display = 'none';
+			const modal = document.getElementById('contact_modal');
+			modal.style.display = 'none';
+			const validationMessage = document.querySelector('.validateFormMessage');
+			validationMessage.style.display = 'flex';
 		}
 	});
 };

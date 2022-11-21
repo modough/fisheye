@@ -44,6 +44,8 @@ export function professionalMedias(data) {
 	const file = `assets/medias/${photographerId}/${video}`;
 
 	const getMediaCardDOM = () => {
+		const ahref = document.createElement('a');
+		ahref.setAttribute('href', video ? file : img);
 		const card = document.createElement('div');
 		card.className = 'photoCard';
 		const mediaDiv = document.createElement('div');
@@ -75,8 +77,39 @@ export function professionalMedias(data) {
 		infoDiv.appendChild(likeSpan);
 		card.appendChild(mediaDiv);
 		card.appendChild(infoDiv);
+		ahref.appendChild(card);
 
-		return card;
+		return ahref;
 	};
 	return { getMediaCardDOM };
+}
+
+export function lightbox(data) {
+	const { title, video, image, photographerId } = data;
+
+	const img = `assets/medias/${photographerId}/${image}`;
+	const file = `assets/medias/${photographerId}/${video}`;
+
+	const getLightboxDOM = () => {
+		const closeBtn = document.createElement('i');
+		const leftChevron = document.createElement('i');
+		const rightChevron = document.createElement('i');
+		const lightboxMediaDiv = document.createElement('div');
+		const lightboxVideo = document.createElement('video');
+		lightboxVideo.src = file;
+		const lightboxImage = document.createElement('img');
+		lightboxImage.src = img;
+		const mediaTitle = document.createElement('p');
+		mediaTitle.innerText = title;
+		closeBtn.classList.add('fa-close');
+		leftChevron.classList.add('fa-chevron-left');
+		rightChevron.classList.add('fa-chevron-right');
+		lightboxMediaDiv.classList.add('lightbox_medias');
+		video
+			? lightboxMediaDiv.appendChild(lightboxVideo)
+			: lightboxMediaDiv.appendChild(lightboxImage);
+		lightboxMediaDiv.appendChild(mediaTitle);
+		return { closeBtn, leftChevron, rightChevron, lightboxMediaDiv };
+	};
+	return { getLightboxDOM };
 }

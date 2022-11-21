@@ -40,6 +40,60 @@ const displayPhotographPageMedia = (media) => {
 	});
 };
 
+// lightbox
+const displayLightbox = () => {
+	const lightboxDiv = document.querySelector('#lightbox');
+	const mediaLinks = document.querySelectorAll('a[href$=".jpg"]');
+	const videoLinks = document.querySelectorAll('a[href$=".mp4"]');
+	const closeBtn = document.createElement('i');
+	const leftChevron = document.createElement('i');
+	const rightChevron = document.createElement('i');
+	closeBtn.className = 'fa fa-close';
+	leftChevron.className = 'fas fa-chevron-left';
+	rightChevron.className = 'fas fa-chevron-right';
+
+	mediaLinks.forEach((link) => {
+		link.addEventListener('click', (e) => {
+			e.preventDefault();
+			lightboxDiv.classList.add('active');
+			const img = document.createElement('img');
+			img.src = link.href;
+			const imgDiv = document.createElement('div');
+			imgDiv.classList.add('lightbox_medias');
+			while (lightboxDiv.firstChild) {
+				lightboxDiv.removeChild(lightboxDiv.firstChild);
+			}
+			imgDiv.appendChild(img);
+			lightboxDiv.appendChild(imgDiv);
+			lightboxDiv.appendChild(closeBtn);
+			lightboxDiv.appendChild(leftChevron);
+			lightboxDiv.appendChild(rightChevron);
+		});
+	});
+	videoLinks.forEach((link) => {
+		link.addEventListener('click', (e) => {
+			e.preventDefault();
+			lightboxDiv.classList.add('active');
+			const video = document.createElement('video');
+			video.src = link.href;
+			const imgDiv = document.createElement('div');
+			imgDiv.classList.add('lightbox_medias');
+			while (lightboxDiv.firstChild) {
+				lightboxDiv.removeChild(lightboxDiv.firstChild);
+			}
+			imgDiv.appendChild(video);
+			lightboxDiv.appendChild(imgDiv);
+			lightboxDiv.appendChild(closeBtn);
+			lightboxDiv.appendChild(leftChevron);
+			lightboxDiv.appendChild(rightChevron);
+		});
+	});
+
+	closeBtn.addEventListener('click', () => {
+		lightboxDiv.classList.remove('active');
+	});
+};
+
 // display page photographer
 const init = async () => {
 	displayPhotographPageHeader();
@@ -47,6 +101,7 @@ const init = async () => {
 		(media) => media.photographerId === parseInt(photographerId)
 	);
 	displayPhotographPageMedia(medias);
+	displayLightbox();
 };
 init();
 contactForm();

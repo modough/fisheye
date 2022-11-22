@@ -46,20 +46,19 @@ export function professionalMedias(data) {
 	const getMediaCardDOM = () => {
 		const ahref = document.createElement('a');
 		ahref.setAttribute('href', video ? file : img);
+		ahref.setAttribute('type', video ? 'video/mp4' : null);
 		const card = document.createElement('div');
 		card.className = 'photoCard';
 		const mediaDiv = document.createElement('div');
 		mediaDiv.className = 'divImgVideo';
-		const videoFile = document.createElement('video');
-		videoFile.setAttribute('src', file);
-		videoFile.setAttribute('type', 'video/mp4');
+		const mediaFile = document.createElement(video ? 'video' : 'img');
+		mediaFile.setAttribute('src', video ? file : img);
+		mediaFile.setAttribute('type', video ? 'video/mp4' : null);
 		const imageFile = document.createElement('img');
 		imageFile.setAttribute('src', img);
 
-		video
-			? (mediaDiv.appendChild(videoFile),
-			  (mediaDiv.className = 'divImgVideo photoCardLink'))
-			: mediaDiv.appendChild(imageFile);
+		mediaDiv.appendChild(mediaFile);
+		mediaDiv.className = video ? 'divImgVideo photoCardLink' : 'divImgVideo';
 
 		const infoDiv = document.createElement('div');
 		infoDiv.className = 'bottomCard';
@@ -82,34 +81,4 @@ export function professionalMedias(data) {
 		return ahref;
 	};
 	return { getMediaCardDOM };
-}
-
-export function lightbox(data) {
-	const { title, video, image, photographerId } = data;
-
-	const img = `assets/medias/${photographerId}/${image}`;
-	const file = `assets/medias/${photographerId}/${video}`;
-
-	const getLightboxDOM = () => {
-		const closeBtn = document.createElement('i');
-		const leftChevron = document.createElement('i');
-		const rightChevron = document.createElement('i');
-		const lightboxMediaDiv = document.createElement('div');
-		const lightboxVideo = document.createElement('video');
-		lightboxVideo.src = file;
-		const lightboxImage = document.createElement('img');
-		lightboxImage.src = img;
-		const mediaTitle = document.createElement('p');
-		mediaTitle.innerText = title;
-		closeBtn.classList.add('fa-close');
-		leftChevron.classList.add('fa-chevron-left');
-		rightChevron.classList.add('fa-chevron-right');
-		lightboxMediaDiv.classList.add('lightbox_medias');
-		video
-			? lightboxMediaDiv.appendChild(lightboxVideo)
-			: lightboxMediaDiv.appendChild(lightboxImage);
-		lightboxMediaDiv.appendChild(mediaTitle);
-		return { closeBtn, leftChevron, rightChevron, lightboxMediaDiv };
-	};
-	return { getLightboxDOM };
 }

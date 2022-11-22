@@ -116,6 +116,12 @@ export const submitForm = () => {
 			modal.style.display = 'none';
 			const validationMessage = document.querySelector('.validateFormMessage');
 			validationMessage.style.display = 'flex';
+			const closeModalButton = document.querySelector('.closeForm');
+			closeModalButton.addEventListener('click', () => {
+				validationMessage.style.display = 'none';
+				main.style.display = 'block';
+				main.style.opacity = '1';
+			});
 		}
 	});
 };

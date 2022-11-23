@@ -3,7 +3,7 @@ export const displayLightbox = () => {
 	const lightboxDiv = document.querySelector('#lightbox');
 	const imageLinks = document.querySelectorAll('a[href$=".jpg"]');
 	const videoLinks = document.querySelectorAll('a[href$=".mp4"]');
-	console.log(imageLinks);
+
 	const closeBtn = document.createElement('i');
 	const leftChevron = document.createElement('i');
 	const rightChevron = document.createElement('i');
@@ -17,6 +17,7 @@ export const displayLightbox = () => {
 			lightboxDiv.classList.add('active');
 			const img = document.createElement('img');
 			img.id = 'lightboxMedia';
+			img.type = 'img/jpg';
 			img.src = link.href;
 			const imgDiv = document.createElement('div');
 			imgDiv.classList.add('lightbox_medias');
@@ -37,6 +38,7 @@ export const displayLightbox = () => {
 			const videos = document.createElement('video');
 			const source = document.createElement('source');
 			videos.id = 'lightboxMedia';
+			videos.controls = true;
 			source.type = 'video/mp4';
 			source.src = link.href;
 			const imgDiv = document.createElement('div');
@@ -52,15 +54,17 @@ export const displayLightbox = () => {
 			lightboxDiv.appendChild(rightChevron);
 		});
 	});
-
+	// closing lightbox
 	closeBtn.addEventListener('click', () => {
 		lightboxDiv.classList.remove('active');
 	});
+
+	// right and left click on lightbox slide
 	const mediaLinks = Array.from(
 		document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]')
 	);
-	console.log(mediaLinks);
-	let index = 1;
+
+	let index = 0;
 	rightChevron.addEventListener('click', () => {
 		if (index + 1 >= mediaLinks.length) {
 			index = 0;

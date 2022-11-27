@@ -29,25 +29,28 @@ export const handleClickOnMedia = () => {
 		const selectedElement = document.querySelectorAll(
 			'.lightbox_medias.active'
 		)[0];
-		const index = children.indexOf(selectedElement);
-		selectedElement.classList.remove('active');
-		const nextElement = children[index + 1];
-		nextElement.classList.add('active');
-		if (children.length - 1 === index) {
-			return selectedElement;
+		let indexElmt = children.indexOf(selectedElement);
+
+		if (indexElmt === children.length - 1) {
+			console.log(indexElmt);
+			indexElmt = -1;
 		}
+		selectedElement.classList.remove('active');
+		const nextElement = children[indexElmt + 1];
+		nextElement.classList.add('active');
 	});
 	leftChevron.addEventListener('click', () => {
 		const selectedElement = document.querySelectorAll(
 			'.lightbox_medias.active'
 		)[0];
-		const index = children.indexOf(selectedElement);
-		selectedElement.classList.remove('active');
-		const nextElement = children[index - 1];
-		nextElement.classList.add('active');
-		if (children.length + 1 === index) {
-			return selectedElement;
+		let indexElmt = children.indexOf(selectedElement);
+
+		if (indexElmt === 0) {
+			indexElmt = children.length;
 		}
+		selectedElement.classList.remove('active');
+		const nextElement = children[indexElmt - 1];
+		nextElement.classList.add('active');
 	});
 };
 export default handleClickOnMedia;

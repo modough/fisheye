@@ -169,6 +169,7 @@ body {
 .fa-chevron-right {
 	top: 50%;
 }
+
 .fa-close {
 	top: 2%;
 }
@@ -186,10 +187,14 @@ body {
 	transition: 0.3s;
 }
 .lightbox_medias {
-	display: flex;
+	display: none;
 	align-items: center;
 	justify-content: center;
+	flex-direction: column;
 	max-height: 50vh;
+}
+.lightbox_medias.active {
+	display: flex;
 }
 .lightbox_medias img,
 .lightbox_medias video {
@@ -198,6 +203,11 @@ body {
 	max-height: 50%;
 	border-radius: 10px;
 	animation: lightboxAnimation 0.5s;
+}
+.lightbox_medias p {
+	color: #901c1c;
+	font-weight: 700;
+	font-size: 24px;
 }
 
 .modal {

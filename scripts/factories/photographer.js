@@ -1,23 +1,24 @@
+import createElementDOM from '../utils/genericDom';
+
 export default function photographerFactory(data) {
-	const { id, name, portrait, city, tagline, price } = data;
+	const { id, name, portrait, city, tagline, price, country } = data;
 
 	const picture = `assets/photographers/${portrait}`;
 	const ahref = `./photographer.html?id=${id}`;
 
 	const getUserCardDOM = () => {
-		const photographId = document.createElement('a');
+		const photographId = createElementDOM('a', '', '', [
+			{ key: 'href', value: ahref },
+		]);
 		const article = document.createElement('article');
-		const img = document.createElement('img');
-		const ville = document.createElement('h3');
-		const slogan = document.createElement('p');
-		const prix = document.createElement('span');
-		const h2 = document.createElement('h2');
-		photographId.setAttribute('href', ahref);
-		img.setAttribute('src', picture);
-		ville.innerText = city;
-		slogan.innerText = tagline;
-		prix.innerText = `${price}€/jour`;
-		h2.textContent = name;
+		const img = createElementDOM('img', '', '', [
+			{ key: 'src', value: picture },
+		]);
+		const ville = createElementDOM('h3', `${city}`);
+		const slogan = createElementDOM('p', `${tagline}`);
+		const prix = createElementDOM('span', `${price}€/jour`);
+		const h2 = createElementDOM('h2', `${name}`);
+
 		photographId.appendChild(article);
 		article.appendChild(img);
 		article.appendChild(h2);
@@ -26,5 +27,34 @@ export default function photographerFactory(data) {
 		article.appendChild(prix);
 		return photographId;
 	};
-	return { getUserCardDOM };
+
+	const getHeaderCardDOM = () => {
+		const parentDiv = document.createElement('div');
+		const locality = createElementDOM('div', '', 'location');
+		const img = createElementDOM('img', '', '', [
+			{ key: 'src', value: picture },
+		]);
+		const ville = createElementDOM('h3', `${city}`);
+		const pays = createElementDOM('h3', `${country}`, 'country');
+		const slogan = createElementDOM('p', `${tagline}`);
+		const h2 = createElementDOM('h2', `${name}`);
+		document.querySelector('.photographer-name').textContent = name;
+		const btn = createElementDOM(
+			'button',
+			'Contactez-moi',
+			'contact_button header_button'
+		);
+		const infos = createElementDOM('div', '', 'contact-userInfo');
+
+		locality.appendChild(ville);
+		locality.appendChild(pays);
+		infos.appendChild(h2);
+		infos.appendChild(locality);
+		infos.appendChild(slogan);
+		parentDiv.appendChild(infos);
+		parentDiv.appendChild(btn);
+		parentDiv.appendChild(img);
+		return parentDiv;
+	};
+	return { getUserCardDOM, getHeaderCardDOM };
 }

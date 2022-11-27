@@ -1,5 +1,5 @@
-export const fetchData = async () => {
-	return fetch('data/photographers.json')
+export const fetchData = async (url) => {
+	return fetch(url)
 		.then((res) => res.json())
 		.then((res) => {
 			const photographers = res.photographers;

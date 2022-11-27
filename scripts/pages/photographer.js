@@ -1,12 +1,13 @@
-import { professionalInfos, professionalMedias } from '../factories/medias.js';
+import { mediaFactory } from '../factories/medias.js';
+import photographerFactory from '../factories/photographer.js';
 import contactForm from '../utils/contactForm.js';
 import { submitForm } from '../utils/contactFormValidation.js';
-import { fetchData } from '../utils/fetchdata.js';
-import { displayLightbox } from '../utils/lightbox.js';
+import { fetchData } from '../utils/fetchData.js';
+import handleClickOnMedia from '../utils/lightbox.js';
 
 async function getPhotographers() {
 	// Penser à remplacer par les données récupérées dans le json
-	return fetchData();
+	return fetchData('data/photographers.json');
 }
 
 // function for display
@@ -25,8 +26,8 @@ const displayPhotographPageHeader = () => {
 			: null;
 
 		// partie photograher header
-		const photographerModel = professionalInfos(foundPhotographer);
-		const userCardDOM = photographerModel.getInfoCardDOM();
+		const photographerModel = photographerFactory(foundPhotographer);
+		const userCardDOM = photographerModel.getHeaderCardDOM();
 		article.appendChild(userCardDOM);
 	}
 };
@@ -35,9 +36,28 @@ const displayPhotographPageMedia = (media) => {
 	const parentDiv = document.querySelector('.photos');
 	parentDiv.innerHTML = '';
 	media.forEach((elmt) => {
-		const photographerModel = professionalMedias(elmt);
+		const photographerModel = mediaFactory(elmt);
 		const mediaCardDOM = photographerModel.getMediaCardDOM();
 		parentDiv.appendChild(mediaCardDOM);
+	});
+};
+// lightbox
+const displayLightbox = (media) => {
+	const lightboxDiv = document.querySelector('#lightbox');
+	const closeBtn = document.createElement('i');
+	const leftChevron = document.createElement('i');
+	const rightChevron = document.createElement('i');
+	closeBtn.className = 'fa fa-close';
+	leftChevron.className = 'fas fa-chevron-left';
+	rightChevron.className = 'fas fa-chevron-right';
+	lightboxDiv.appendChild(closeBtn);
+	lightboxDiv.appendChild(leftChevron);
+	lightboxDiv.appendChild(rightChevron);
+	console.log(media);
+	media.forEach((link) => {
+		const lightboxModel = mediaFactory(link);
+		const lightboxCardDOM = lightboxModel.getLightboxCardDOM();
+		lightboxDiv.appendChild(lightboxCardDOM);
 	});
 };
 
@@ -48,7 +68,8 @@ const init = async () => {
 		(media) => media.photographerId === parseInt(photographerId)
 	);
 	displayPhotographPageMedia(medias);
-	displayLightbox();
+	displayLightbox(medias);
+	handleClickOnMedia();
 };
 init();
 contactForm();

@@ -1,4 +1,4 @@
-/*export default function createElementDOM(
+export default function createElementDOM(
 	type,
 	txt = '',
 	className = '',
@@ -13,4 +13,4 @@
 		);
 	}
 	return elt;
-}*/
+}

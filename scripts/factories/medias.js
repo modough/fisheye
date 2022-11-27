@@ -1,75 +1,35 @@
-export function professionalInfos(data) {
-	const { name, portrait, city, country, tagline } = data;
+import createElementDOM from '../utils/genericDom';
 
-	const picture = `assets/photographers/${portrait}`;
-
-	const getInfoCardDOM = () => {
-		const parentDiv = document.createElement('div');
-		const locality = document.createElement('div');
-		const img = document.createElement('img');
-		const ville = document.createElement('h3');
-		const pays = document.createElement('h3');
-		const slogan = document.createElement('p');
-		const h2 = document.createElement('h2');
-		document.querySelector('.photographer-name').textContent = name;
-		const btn = document.createElement('button');
-		const infos = document.createElement('div');
-		img.setAttribute('src', picture);
-		ville.innerText = `${city},`;
-		pays.innerText = country;
-		pays.className = 'country';
-		slogan.innerText = tagline;
-		btn.innerText = 'Contactez-moi';
-		btn.className = 'contact_button header_button';
-		h2.textContent = name;
-		locality.className = 'location';
-		locality.appendChild(ville);
-		locality.appendChild(pays);
-		infos.className = 'contact-userInfo';
-		infos.appendChild(h2);
-		infos.appendChild(locality);
-		infos.appendChild(slogan);
-		parentDiv.appendChild(infos);
-		parentDiv.appendChild(btn);
-		parentDiv.appendChild(img);
-		return parentDiv;
-	};
-	return { getInfoCardDOM };
-}
-
-export function professionalMedias(data) {
+export function mediaFactory(data) {
 	const { title, image, likes, video, photographerId } = data;
+	console.log(video);
 
-	const img = `assets/medias/${photographerId}/${image}`;
+	const picture = `assets/medias/${photographerId}/${image}`;
 	const file = `assets/medias/${photographerId}/${video}`;
 
 	const getMediaCardDOM = () => {
-		const ahref = document.createElement('a');
-		ahref.setAttribute('href', video ? file : img);
-		ahref.setAttribute('type', video ? 'video/mp4' : null);
-		const card = document.createElement('div');
-		card.className = 'photoCard';
-		const mediaDiv = document.createElement('div');
-		mediaDiv.className = 'divImgVideo';
-		const mediaFile = document.createElement(video ? 'video' : 'img');
-		mediaFile.setAttribute('src', video ? file : img);
-		mediaFile.setAttribute('type', video ? 'video/mp4' : null);
-		const imageFile = document.createElement('img');
-		imageFile.setAttribute('src', img);
-
-		mediaDiv.appendChild(mediaFile);
-		mediaDiv.className = video ? 'divImgVideo photoCardLink' : 'divImgVideo';
-
-		const infoDiv = document.createElement('div');
-		infoDiv.className = 'bottomCard';
-		const titre = document.createElement('h2');
-		titre.innerText = title;
+		const ahref = createElementDOM('a', '', '', [
+			{ key: 'href', value: video ? file : picture },
+			{ key: 'type', value: video ? 'video/mp4' : 'img' },
+			{ key: 'title', value: title },
+			{ key: 'index', value: 0 },
+		]);
+		const card = createElementDOM('div', '', 'photoCard');
+		const mediaDiv = createElementDOM(
+			'div',
+			'',
+			video ? 'divImgVideo photoCardLink' : 'divImgVideo'
+		);
+		const mediaFile = createElementDOM(video ? 'video' : 'img', '', '', [
+			{ key: 'src', value: video ? file : picture },
+			{ key: 'type', value: video ? 'video/mp4' : 'img/jpg' },
+		]);
+		const infoDiv = createElementDOM('div', '', 'bottomCard');
+		const titre = createElementDOM('h2', `${title}`);
 		const likeSpan = document.createElement('span');
-		const like = document.createElement('p');
-		like.className = 'numberOfLikes';
-		like.innerText = likes;
-		const heart = document.createElement('i');
-		heart.className = 'fas fa-heart';
+		const like = createElementDOM('p', `${likes}`, 'numberOfLikes');
+		const heart = createElementDOM('i', '', 'fas fa-heart');
+		mediaDiv.appendChild(mediaFile);
 		likeSpan.appendChild(like);
 		likeSpan.appendChild(heart);
 		infoDiv.appendChild(titre);
@@ -80,5 +40,30 @@ export function professionalMedias(data) {
 
 		return ahref;
 	};
-	return { getMediaCardDOM };
+	const getLightboxCardDOM = () => {
+		const mediaDiv = createElementDOM('div', '', 'lightbox_medias');
+		if (image !== undefined && image !== null) {
+			const img = createElementDOM('img', '', 'lightboxImg', [
+				{ key: 'src', value: picture },
+			]);
+			mediaDiv.appendChild(img);
+		} else if (video !== undefined && video !== null) {
+			const mp4 = createElementDOM('video', '', 'lightboxVideo', [
+				{ key: 'title', value: title },
+				{ key: 'controls', value: 'true' },
+			]);
+			const src = createElementDOM('source', '', '', [
+				{ key: 'src', value: file },
+				{ key: 'type', value: 'video/mp4' },
+			]);
+			mp4.appendChild(src);
+			mediaDiv.appendChild(mp4);
+		}
+		const titleImg = createElementDOM('p', `${title}`);
+
+		mediaDiv.appendChild(titleImg);
+
+		return mediaDiv;
+	};
+	return { getMediaCardDOM, getLightboxCardDOM };
 }

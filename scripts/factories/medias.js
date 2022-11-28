@@ -2,11 +2,11 @@ import createElementDOM from '../utils/genericDom';
 
 export function mediaFactory(data) {
 	const { title, image, likes, video, photographerId } = data;
-	console.log(video);
 
 	const picture = `assets/medias/${photographerId}/${image}`;
 	const file = `assets/medias/${photographerId}/${video}`;
 
+	// Dom elements such as images and videos on photographer's page
 	const getMediaCardDOM = () => {
 		const ahref = createElementDOM('a', '', '', [
 			{ key: 'href', value: video ? file : picture },
@@ -40,6 +40,8 @@ export function mediaFactory(data) {
 
 		return ahref;
 	};
+
+	// Dom elements such as images and videos on lightbox
 	const getLightboxCardDOM = () => {
 		const mediaDiv = createElementDOM('div', '', 'lightbox_medias');
 		if (image !== undefined && image !== null) {

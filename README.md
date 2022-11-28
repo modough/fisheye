@@ -1,6 +1,3 @@
-# Base de code du projet P6 - Parcours Front-end
+# Démarrer le projet
 
-## Démarrer le projet
-
-Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
-
+Vous pouvez demarrer le projet en utilisant l'extension Live Server sur vscode.

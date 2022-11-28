@@ -10,7 +10,7 @@ async function getPhotographers() {
 	return fetchData('data/photographers.json');
 }
 
-// function for display
+// function for displaying elements
 const params = new URL(location.href).searchParams;
 const photographerId = params.get('id');
 const { photographers, media } = await getPhotographers();
@@ -53,7 +53,6 @@ const displayLightbox = (media) => {
 	lightboxDiv.appendChild(closeBtn);
 	lightboxDiv.appendChild(leftChevron);
 	lightboxDiv.appendChild(rightChevron);
-	console.log(media);
 	media.forEach((link) => {
 		const lightboxModel = mediaFactory(link);
 		const lightboxCardDOM = lightboxModel.getLightboxCardDOM();
@@ -61,7 +60,7 @@ const displayLightbox = (media) => {
 	});
 };
 
-// display page photographer
+// init all
 const init = async () => {
 	displayPhotographPageHeader();
 	const medias = await media.filter(
@@ -70,7 +69,10 @@ const init = async () => {
 	displayPhotographPageMedia(medias);
 	displayLightbox(medias);
 	handleClickOnMedia();
+	contactForm();
+	const photograherData = await photographers.filter(
+		(data) => data.id === parseInt(photographerId)
+	);
+	submitForm(photograherData);
 };
 init();
-contactForm();
-submitForm();

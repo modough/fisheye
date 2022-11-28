@@ -6,11 +6,14 @@ export default function photographerFactory(data) {
 	const picture = `assets/photographers/${portrait}`;
 	const ahref = `./photographer.html?id=${id}`;
 
+	// Dom elements such as profil pic, name, city... for all photographers on main page
 	const getUserCardDOM = () => {
 		const photographId = createElementDOM('a', '', '', [
 			{ key: 'href', value: ahref },
 		]);
 		const article = document.createElement('article');
+		const imgDiv = createElementDOM('div', '', 'imageDiv');
+		const bottomDiv = createElementDOM('div', '', 'bottomDiv');
 		const img = createElementDOM('img', '', '', [
 			{ key: 'src', value: picture },
 		]);
@@ -19,15 +22,18 @@ export default function photographerFactory(data) {
 		const prix = createElementDOM('span', `${price}€/jour`);
 		const h2 = createElementDOM('h2', `${name}`);
 
+		imgDiv.appendChild(img);
+		bottomDiv.appendChild(h2);
+		bottomDiv.appendChild(ville);
+		bottomDiv.appendChild(slogan);
+		bottomDiv.appendChild(prix);
+		article.appendChild(imgDiv);
+		article.appendChild(bottomDiv);
 		photographId.appendChild(article);
-		article.appendChild(img);
-		article.appendChild(h2);
-		article.appendChild(ville);
-		article.appendChild(slogan);
-		article.appendChild(prix);
 		return photographId;
 	};
 
+	// Dom elements such as profil pic, name, city... for a single photographer on photographer's page
 	const getHeaderCardDOM = () => {
 		const parentDiv = document.createElement('div');
 		const locality = createElementDOM('div', '', 'location');

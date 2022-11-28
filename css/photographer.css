@@ -79,12 +79,23 @@ body {
 	padding-right: 10px;
 	font-size: 18px;
 }
+.trierDiv {
+	display: flex;
+	align-items: center;
+}
 .trierDiv select {
+	width: 170px;
 	padding: 10px 40px;
 	background-color: #901c1c;
 	color: #fafafa;
 	border: none;
 	border-radius: 5px;
+	font-size: 18px;
+	font-weight: 700;
+}
+.trierDiv select option {
+	font-size: 18px;
+	font-weight: 700;
 }
 .photos {
 	display: flex;
@@ -247,6 +258,7 @@ body {
 	font-size: 64px;
 	font-weight: 400;
 	margin: 0;
+	text-align: center;
 }
 form {
 	display: flex;
@@ -284,14 +296,21 @@ form textarea {
 	border-radius: 5px;
 	background-color: #db8876;
 	width: 50%;
-	flex-direction: row;
+	flex-direction: column-reverse;
 	align-items: center;
 	justify-content: space-between;
 	padding: 35px;
-	margin: auto;
-	position: absolute;
+	position: relative;
 	top: 30px;
 	left: 25%;
+	font-size: 30px;
+}
+.validateFormMessage .closeForm {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 20px;
+	cursor: pointer;
 }
 .priceAndLikes {
 	width: 376px;

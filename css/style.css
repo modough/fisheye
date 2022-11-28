@@ -42,16 +42,22 @@ h1 {
 	align-items: center;
 	flex-direction: column;
 }
-
-.photographer_section article h2 {
+.bottomDiv {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
+.bottomDiv h2 {
 	color: #d3573c;
 	font-size: 36px;
 	font-weight: 400;
-	height: 47px;
+
 	margin-bottom: 0;
+	text-align: center;
 }
 
-.photographer_section article img {
+.imageDiv img {
 	object-fit: cover;
 	height: 200px;
 	width: 200px;

@@ -10,7 +10,7 @@ body {
 #contact_modal {
 	display: none;
 }
-.photograph-header > div {
+.photograph-header .headerCardDiv {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -26,6 +26,8 @@ body {
 	height: 250px;
 	border-radius: 50%;
 	object-fit: cover;
+	background-color: #dedede;
+	filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.25));
 }
 .contact-userInfo {
 	display: flex;
@@ -85,7 +87,7 @@ body {
 }
 .trierDiv select {
 	width: 170px;
-	padding: 10px 40px;
+	padding: 10px 30px;
 	background-color: #901c1c;
 	color: #fafafa;
 	border: none;
@@ -128,6 +130,7 @@ body {
 	height: 300px;
 	border-radius: 5px;
 	object-fit: cover;
+	object-position: top;
 }
 .divImgVideo img:hover,
 .divImgVideo video:hover {
@@ -152,8 +155,12 @@ body {
 }
 #lightbox {
 	display: none;
+}
+#lightbox.active {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	position: fixed;
-
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -162,10 +169,6 @@ body {
 	z-index: 1000;
 	overflow: auto;
 	animation: lightboxAnimation 0.5s;
-}
-#lightbox.active {
-	display: flex;
-	align-items: center;
 }
 .fa-close,
 .fa-chevron-left,
@@ -199,17 +202,22 @@ body {
 }
 .lightbox_medias {
 	display: none;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	max-height: 50vh;
 }
 .lightbox_medias.active {
 	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	max-height: 100vh;
+	margin-top: 200px;
+	margin-bottom: 50px;
 }
 .lightbox_medias img,
 .lightbox_medias video {
+	width: 1200px;
+	height: 1200px;
 	object-fit: cover;
+	object-position: center;
 	max-width: 50%;
 	max-height: 50%;
 	border-radius: 10px;
@@ -230,9 +238,9 @@ body {
 	justify-content: space-between;
 	padding: 35px;
 	margin: auto;
-	position: absolute;
-	top: 30px;
-	left: 25%;
+	position: fixed;
+	top: 10px;
+	left: 30%;
 	width: 669px;
 	overflow-y: scroll;
 }
@@ -303,6 +311,8 @@ form textarea {
 	position: relative;
 	top: 30px;
 	left: 25%;
+}
+.validateFormMessage .message {
 	font-size: 30px;
 }
 .validateFormMessage .closeForm {

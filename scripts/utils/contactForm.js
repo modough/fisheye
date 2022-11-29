@@ -4,7 +4,7 @@ export default function contactForm() {
 	const modal = document.getElementById('contact_modal');
 	const displayModal = () => {
 		modal.style.display = 'block';
-		main.style.opacity = '.7';
+		main.style.opacity = '.3';
 	};
 	const contactButton = document.querySelector('.contact_button');
 	contactButton.addEventListener('click', () => {

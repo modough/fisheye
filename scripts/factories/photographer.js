@@ -10,12 +10,14 @@ export default function photographerFactory(data) {
 	const getUserCardDOM = () => {
 		const photographId = createElementDOM('a', '', '', [
 			{ key: 'href', value: ahref },
+			{ key: 'aria-label', value: name },
 		]);
 		const article = document.createElement('article');
 
 		const bottomDiv = createElementDOM('div', '', 'bottomDiv');
 		const img = createElementDOM('img', '', '', [
 			{ key: 'src', value: picture },
+			{ key: 'alt', value: name },
 		]);
 		const ville = createElementDOM('h3', `${city}`);
 		const slogan = createElementDOM('p', `${tagline}`);
@@ -38,6 +40,7 @@ export default function photographerFactory(data) {
 		const locality = createElementDOM('div', '', 'location');
 		const img = createElementDOM('img', '', '', [
 			{ key: 'src', value: picture },
+			{ key: 'alt', value: name },
 		]);
 		const ville = createElementDOM('h3', `${city}`);
 		const pays = createElementDOM('h3', `${country}`, 'country');
@@ -47,7 +50,11 @@ export default function photographerFactory(data) {
 		const btn = createElementDOM(
 			'button',
 			'Contactez-moi',
-			'contact_button header_button'
+			'contact_button header_button',
+			[
+				{ key: 'arial-label', value: 'Contactez-moi' },
+				{ key: 'type', value: 'button' },
+			]
 		);
 		const infos = createElementDOM('div', '', 'contact-userInfo');
 

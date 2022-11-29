@@ -23,6 +23,7 @@ export function mediaFactory(data) {
 		const mediaFile = createElementDOM(video ? 'video' : 'img', '', '', [
 			{ key: 'src', value: video ? file : picture },
 			{ key: 'type', value: video ? 'video/mp4' : 'img/jpg' },
+			{ key: 'aria-label', value: 'vous accedez à la lightbox' },
 		]);
 		const infoDiv = createElementDOM('div', '', 'bottomCard');
 		const titre = createElementDOM('h2', `${title}`);

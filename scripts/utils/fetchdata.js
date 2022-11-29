@@ -10,6 +10,6 @@ export const fetchData = async (url) => {
 			};
 		})
 		.catch((err) => {
-			throw err + 'Failed to fetch Data';
+			alert(err + 'Failed to fetch Data');
 		});
 };

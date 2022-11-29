@@ -5,6 +5,7 @@ export const handleClickOnMedia = () => {
 	const links = document.querySelectorAll(
 		'#photos img[src$="jpg"],video[src$=".mp4"]'
 	);
+	const closeBtn = document.querySelector('.fa-close');
 	const leftChevron = document.querySelector('.fa-chevron-left');
 	const rightChevron = document.querySelector('.fa-chevron-right');
 
@@ -18,7 +19,6 @@ export const handleClickOnMedia = () => {
 		})
 	);
 	// we close the lightbox and remove all active classes
-	const closeBtn = document.querySelector('.fa-close');
 	closeBtn.addEventListener('click', () => {
 		lightbox.classList.remove('active');
 		const selectedElement = document.querySelectorAll(
@@ -54,6 +54,49 @@ export const handleClickOnMedia = () => {
 		selectedElement.classList.remove('active');
 		const nextElement = children[indexOfElmt - 1];
 		nextElement.classList.add('active');
+	});
+
+	// handle Keyboard navigation
+	document.addEventListener('keydown', (e) => {
+		e.preventDefault();
+
+		if (e.key === 'Enter') {
+			lightbox.classList.add('active');
+			children[0].classList.add('active');
+		}
+		if (e.key === 'Escape') {
+			lightbox.classList.remove('active');
+			const selectedElement = document.querySelectorAll(
+				'.lightbox_medias.active'
+			)[0];
+			selectedElement.classList.remove('active');
+		}
+		if (e.key === 'ArrowRight') {
+			const selectedElement = document.querySelectorAll(
+				'.lightbox_medias.active'
+			)[0];
+			let indexOfElmt = children.indexOf(selectedElement);
+
+			if (indexOfElmt === children.length - 1) {
+				indexOfElmt = -1;
+			}
+			selectedElement.classList.remove('active');
+			const nextElement = children[indexOfElmt + 1];
+			nextElement.classList.add('active');
+		}
+		if (e.key === 'ArrowLeft') {
+			const selectedElement = document.querySelectorAll(
+				'.lightbox_medias.active'
+			)[0];
+			let indexOfElmt = children.indexOf(selectedElement);
+
+			if (indexOfElmt === 0) {
+				indexOfElmt = children.length;
+			}
+			selectedElement.classList.remove('active');
+			const nextElement = children[indexOfElmt - 1];
+			nextElement.classList.add('active');
+		}
 	});
 };
 export default handleClickOnMedia;

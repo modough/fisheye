@@ -19,13 +19,17 @@ export default function photographerFactory(data) {
 			{ key: 'src', value: picture },
 			{ key: 'alt', value: name },
 		]);
-		const ville = createElementDOM('h3', `${city}`);
+		const ville = createElementDOM('h3', `${city},`, 'ville');
+		const pays = createElementDOM('h3', `${country}`);
+		const villePaysDiv = createElementDOM('div', '', 'villePaysDiv');
 		const slogan = createElementDOM('p', `${tagline}`);
 		const prix = createElementDOM('span', `${price}€/jour`);
 		const h2 = createElementDOM('h2', `${name}`);
 
 		bottomDiv.appendChild(h2);
-		bottomDiv.appendChild(ville);
+		bottomDiv.appendChild(villePaysDiv);
+		villePaysDiv.appendChild(ville);
+		villePaysDiv.appendChild(pays);
 		bottomDiv.appendChild(slogan);
 		bottomDiv.appendChild(prix);
 		article.appendChild(img);
@@ -42,7 +46,7 @@ export default function photographerFactory(data) {
 			{ key: 'src', value: picture },
 			{ key: 'alt', value: name },
 		]);
-		const ville = createElementDOM('h3', `${city}`);
+		const ville = createElementDOM('h3', `${city},`);
 		const pays = createElementDOM('h3', `${country}`, 'country');
 		const slogan = createElementDOM('p', `${tagline}`);
 		const h2 = createElementDOM('h2', `${name}`);

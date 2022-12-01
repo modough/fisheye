@@ -2,9 +2,7 @@
 export const handleClickOnMedia = () => {
 	const lightbox = document.querySelector('#lightbox');
 	const children = Array.from(document.querySelectorAll('.lightbox_medias'));
-	const links = document.querySelectorAll(
-		'#photos img[src$="jpg"],video[src$=".mp4"]'
-	);
+	const links = document.querySelectorAll('#photos img, video');
 	const closeBtn = document.querySelector('.fa-close');
 	const leftChevron = document.querySelector('.fa-chevron-left');
 	const rightChevron = document.querySelector('.fa-chevron-right');
@@ -57,7 +55,8 @@ export const handleClickOnMedia = () => {
 	});
 
 	// handle Keyboard navigation
-	document.addEventListener('keydown', (e) => {
+	const body = document.querySelector('#contact-container');
+	body.addEventListener('keydown', (e) => {
 		e.preventDefault();
 
 		if (e.key === 'Enter') {

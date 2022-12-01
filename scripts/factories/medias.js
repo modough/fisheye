@@ -29,28 +29,28 @@ export function mediaFactory(data) {
 		const titre = createElementDOM('h2', `${title}`);
 		const likeSpan = document.createElement('span');
 		const like = createElementDOM('p', `${likes}`, 'numberOfLikes');
-		const heart = createElementDOM('i', '', 'fas fa-heart');
+		const heart = createElementDOM('i', '', 'fas fa-heart heartInCard');
 		mediaDiv.appendChild(mediaFile);
 		likeSpan.appendChild(like);
 		likeSpan.appendChild(heart);
 		infoDiv.appendChild(titre);
 		infoDiv.appendChild(likeSpan);
-		card.appendChild(mediaDiv);
+		ahref.appendChild(mediaDiv);
+		card.appendChild(ahref);
 		card.appendChild(infoDiv);
-		ahref.appendChild(card);
 
-		return ahref;
+		return card;
 	};
 
 	// Dom elements such as images and videos on lightbox
 	const getLightboxCardDOM = () => {
 		const mediaDiv = createElementDOM('div', '', 'lightbox_medias');
-		if (image !== undefined && image !== null) {
+		if (image) {
 			const img = createElementDOM('img', '', 'lightboxImg', [
 				{ key: 'src', value: picture },
 			]);
 			mediaDiv.appendChild(img);
-		} else if (video !== undefined && video !== null) {
+		} else if (video) {
 			const mp4 = createElementDOM('video', '', 'lightboxVideo', [
 				{ key: 'title', value: title },
 				{ key: 'controls', value: 'true' },

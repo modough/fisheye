@@ -16,8 +16,7 @@
       </header>
       <div id="contact-container">
         <div class="photograph-header"></div>
-        <div class="photograph-porfolio">
-          <div class="trierDiv">
+        <div class="trierDiv">
             <label for="trier">Trier par</label>
             <select name="trier" id="trier">
               <option value="popularite">Popularité</option>
@@ -25,16 +24,17 @@
               <option value="titre">Titre</option>
             </select>
           </div>
+        <div class="photograph-porfolio">
+          
           <div class="photos" id="photos"></div>
           <div class="lightbox" id="lightbox"></div>
-          
         </div>
        
       </div>
       <div class="priceAndLikes">
         <div class="likes">
           <p class="numberOfLikes">25</p>
-          <i class="fa fa-heart likesHeart"></i>
+          <i class="fa fa-heart likesHeartTotal"></i>
         </div>
         <p class="price">300€ / jour</p>
       </div>
@@ -77,6 +77,8 @@
 		</div>
     <div class="validateFormMessage">
       <p class="message">Message envoyé ! Merci !</p>
+      <p class="photographer-name"></p>
+      <img class="closeForm" src="assets/icons/close.svg" />
     </div>
     
     <script src="/polyfill.bundle.js"></script>

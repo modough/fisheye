@@ -14,17 +14,16 @@ async function getPhotographers() {
 const params = new URL(location.href).searchParams;
 const photographerId = params.get('id');
 const { photographers, media } = await getPhotographers();
+const medias = await media.filter(
+	(media) => media.photographerId === parseInt(photographerId)
+);
+const foundPhotographer = photographers.find(
+	(data) => data.id === parseInt(photographerId)
+);
 
 const displayPhotographPageHeader = () => {
 	if (photographerId) {
 		const article = document.querySelector('.photograph-header');
-		const foundPhotographers = photographers.filter(
-			(data) => data.id === parseInt(photographerId)
-		);
-		const foundPhotographer = foundPhotographers.length
-			? foundPhotographers[0]
-			: null;
-
 		// partie photograher header
 		const photographerModel = photographerFactory(foundPhotographer);
 		const userCardDOM = photographerModel.getHeaderCardDOM();
@@ -63,16 +62,10 @@ const displayLightbox = (media) => {
 // init all
 const init = async () => {
 	displayPhotographPageHeader();
-	const medias = await media.filter(
-		(media) => media.photographerId === parseInt(photographerId)
-	);
 	displayPhotographPageMedia(medias);
 	displayLightbox(medias);
 	handleClickOnMedia();
-	contactForm();
-	const photograherData = await photographers.filter(
-		(data) => data.id === parseInt(photographerId)
-	);
-	submitForm(photograherData);
 };
 init();
+contactForm();
+submitForm(medias);

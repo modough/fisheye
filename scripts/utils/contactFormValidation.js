@@ -1,12 +1,10 @@
-import createElementDOM from './genericDom';
-
 const firstnameInput = document.getElementById('first');
 const lastnameInput = document.getElementById('last');
 const emailInput = document.getElementById('email');
 const messageInput = document.getElementById('message');
 
 //regex match
-export const setLettersRgxp = /^[a-zA-Z \-àâäèéêëîïôœùûüÿçÀÂÄÈÉÊËÎÏÔŒÙÛÜŸÇ]+$/;
+export const setLettersRgxp = /^[a-zA-Z]+$/;
 export const setEmailRgxp =
 	/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -90,11 +88,7 @@ export const validate = () => {
 };
 
 // Submit form
-export const submitForm = (data) => {
-	const PhotographerName = createElementDOM('p', '', 'photographer-name');
-	const closeForm = createElementDOM('img', '', 'closeForm', [
-		{ key: 'src', value: 'assets/icons/close.svg' },
-	]);
+export const submitForm = () => {
 	const form = document.querySelector('#form');
 	const firstname = document.querySelector('.first');
 	const lastname = document.querySelector('.last');
@@ -114,18 +108,14 @@ export const submitForm = (data) => {
 			console.log('Nom: ' + lastnameInput.value);
 			console.log('Email: ' + emailInput.value);
 			console.log('Message: ' + messageInput.value);
-
 			const main = document.getElementById('main');
 			main.style.display = 'none';
 			const modal = document.getElementById('contact_modal');
 			modal.style.display = 'none';
 			const validationMessage = document.querySelector('.validateFormMessage');
 			validationMessage.style.display = 'flex';
-			PhotographerName.textContent = data[0].name;
-			validationMessage.appendChild(PhotographerName);
-			validationMessage.appendChild(closeForm);
-
-			closeForm.addEventListener('click', () => {
+			const closeModalButton = document.querySelector('.closeForm');
+			closeModalButton.addEventListener('click', () => {
 				validationMessage.style.display = 'none';
 				main.style.display = 'block';
 				main.style.opacity = '1';

@@ -1,3 +1,4 @@
 # Démarrer le projet
 
-Vous pouvez demarrer le projet en utilisant l'extension Live Server sur vscode.
+Démarrer le projet en utilisant l'extension Live Server sur vscode.
+Vous pouvez également le lancer avec npm install puis npm run start.

@@ -55,10 +55,8 @@ export const handleClickOnMedia = () => {
 	});
 
 	// handle Keyboard navigation
-	const body = document.querySelector('#contact-container');
-	body.addEventListener('keydown', (e) => {
-		e.preventDefault();
 
+	document.addEventListener('keydown', (e) => {
 		if (e.key === 'Enter') {
 			lightbox.classList.add('active');
 			children[0].classList.add('active');

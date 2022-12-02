@@ -4,9 +4,8 @@ const emailInput = document.getElementById('email');
 const messageInput = document.getElementById('message');
 
 //regex match
-export const setLettersRgxp = /^[a-zA-Z]+$/;
-export const setEmailRgxp =
-	/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+export const setLettersRgxp = /^[a-zA-Z \-àâäèéêëîïôœùûüÿçÀÂÄÈÉÊËÎÏÔŒÙÛÜŸÇ]+$/;
+export const setEmailRgxp = /^[a-z0-9._-]+@{1}[a-z0-9.-_]{2,}[.]{1}[a-z]{2,5}$/;
 
 // valid message function
 export const setErrorMsg = (elmt, validMessage) => {

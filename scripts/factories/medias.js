@@ -27,7 +27,7 @@ export function mediaFactory(data) {
 		]);
 		const infoDiv = createElementDOM('div', '', 'bottomCard');
 		const titre = createElementDOM('h2', `${title}`);
-		const likeSpan = document.createElement('span');
+		const likeSpan = createElementDOM('span', '', 'likeSpan');
 		const like = createElementDOM('p', `${likes}`, 'numberOfLikes');
 		const heart = createElementDOM('i', '', 'fas fa-heart heartInCard');
 		mediaDiv.appendChild(mediaFile);

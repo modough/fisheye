@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />
@@ -17,12 +17,20 @@
       <div id="contact-container">
         <div class="photograph-header"></div>
         <div class="trierDiv">
-            <label for="trier">Trier par</label>
-            <select name="trier" id="trier">
-              <option value="popularite">Popularité</option>
-              <option value="date">Date</option>
-              <option value="titre">Titre</option>
-            </select>
+            <p>Trier par</p>
+            <div class="trier">
+              <div class="popularite">
+                <p>Popularité</p>
+                <i class="fas fa-angle-down"></i>
+                <i class="fas fa-angle-up"></i>
+              </div>
+              <div class="date">
+                <p>Date</p>
+              </div>
+              <div class="titre">
+                <p>Titre</p>
+              </div>
+            </div>
           </div>
         <div class="photograph-porfolio">
           
@@ -33,10 +41,10 @@
       </div>
       <div class="priceAndLikes">
         <div class="totalLikes">
-          <p class="totalNumberOfLikes">25</p>
+          <h3 class="totalNumberOfLikes">25</h3>
           <i class="fa fa-heart likesHeartTotal"></i>
         </div>
-        <p class="price">300€ / jour</p>
+        <h3 class="price">300€ / jour</h3>
       </div>
     </main>
    
@@ -44,10 +52,10 @@
 			<div class="modal">
 				<header>
           <div>
-            <h2>Contactez-moi</h2>
-            <p class="photographer-name"></p>
+            <h1>Contactez-moi</h1>
+            <h1 class="photographer-name"></h1>
           </div>
-          <img class="closeModal-btn" src="assets/icons/close.svg" />
+          <img class="closeModal-btn" src="assets/icons/close.svg" role="button" aria-label="fermer le modal" alt="icone fermer modal"/>
         </header>
 				<form id="form" >
 					<div class="first">
@@ -77,8 +85,8 @@
 		</div>
     <div class="validateFormMessage">
       <p class="message">Message envoyé ! Merci !</p>
-      <p class="photographer-name"></p>
-      <img class="closeForm" src="assets/icons/close.svg" />
+      <h2 class="photographer-name"></h2>
+      <img class="closeForm" src="assets/icons/close.svg" role="button" aria-label="fermer le modal" alt="icone fermer modal"/>
     </div>
     
     <script src="/polyfill.bundle.js"></script>

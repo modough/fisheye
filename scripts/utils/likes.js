@@ -21,23 +21,5 @@ export const numberOfLikes = (medias) => {
 			}
 		});
 	});
-
-	/*
-    likeHeart.forEach((e) => {
-		e.addEventListener('click', () => {
-			likesAmount.forEach((el) => {
-				if (el.classList.contains('liked')) {
-					el.innerText--;
-					el.classList.remove('liked');
-					totalOfLikesDiv.innerText--;
-				} else {
-					el.innerText++;
-					el.classList.add('liked');
-					totalOfLikesDiv.innerText++;
-				}
-			});
-		});
-	});
-    */
 };
 export default numberOfLikes;

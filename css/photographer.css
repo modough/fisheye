@@ -77,7 +77,7 @@ body {
 }
 
 /*----------------------- Tri select option ---------------------*/
-.trierDiv label {
+.trierDiv p {
 	font-weight: 700;
 	padding-right: 10px;
 	font-size: 18px;
@@ -89,8 +89,49 @@ body {
 	padding-left: 100px;
 	padding-top: 50px;
 }
-.trierDiv select {
+.popularite {
+	display: flex;
+	align-items: center;
+	position: relative;
 	width: 170px;
+	height: 69px;
+	padding: 10px 30px;
+	background-color: #901c1c;
+	color: #fafafa;
+	border: none;
+	border-radius: 5px;
+	font-size: 18px;
+	font-weight: 700;
+}
+.popularite p {
+	font-size: 18px;
+}
+.popularite .fas {
+	position: absolute;
+	cursor: pointer;
+	right: 24px;
+	top: 24px;
+	font-size: 24px;
+}
+.popularite .fa-angle-up {
+	display: none;
+}
+.date {
+	display: none;
+	width: 170px;
+	height: 69px;
+	padding: 10px 30px;
+	background-color: #901c1c;
+	color: #fafafa;
+	border: none;
+	border-radius: 5px;
+	font-size: 18px;
+	font-weight: 700;
+}
+.titre {
+	display: none;
+	width: 170px;
+	height: 69px;
 	padding: 10px 30px;
 	background-color: #901c1c;
 	color: #fafafa;
@@ -118,18 +159,19 @@ body {
 	justify-content: space-between;
 	row-gap: 30px;
 }
+.photoCard {
+	width: 100%;
+	max-width: 350px;
+}
 .photoCardLink {
 	position: relative;
 }
-
-.photoCardLink::after {
-	content: '';
+.photoCardLink .fas.fa-play {
 	position: absolute;
 	top: 45%;
 	left: 45%;
-	border-top: 20px solid transparent;
-	border-bottom: 20px solid transparent;
-	border-left: 30px solid white;
+	font-size: 50px;
+	color: white;
 }
 .divImgVideo {
 	display: flex;
@@ -155,7 +197,10 @@ body {
 	color: #901c1c;
 }
 .bottomCard h2 {
-	font-size: 17px;
+	font-size: 24px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 .bottomCard .likeSpan {
 	display: flex;
@@ -262,17 +307,24 @@ body {
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
-	margin-bottom: 50px;
+	margin-bottom: 80px;
+	align-items: baseline;
+}
+.modal header > div {
+	display: flex;
+	flex-direction: column;
 }
 .modal header img {
 	cursor: pointer;
 }
-.modal header h2 {
+.modal header h1 {
 	font-size: 64px;
 	font-weight: 400;
-
 	margin: 0;
+	color: black;
+	text-align: left;
 }
+
 .photographer-name {
 	font-size: 64px;
 	font-weight: 400;
@@ -290,10 +342,7 @@ form label {
 	font-size: 36px;
 }
 form div {
-	display: flex;
-	flex-direction: column;
 	width: 100%;
-	align-items: self-start;
 }
 form input {
 	width: 100%;
@@ -335,19 +384,18 @@ form textarea {
 
 /*---------------------- bottom sticker for daily price and total likes --------------*/
 .priceAndLikes {
-	width: 376px;
+	width: 400px;
 	height: 89px;
 	border-radius: 5px;
 	background-color: #db8876;
 	position: fixed;
 	right: 1%;
-	top: 89%;
+	top: 90%;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	padding: 50px;
 	font-size: 24px;
-	font-weight: 500;
 }
 .priceAndLikes .totalLikes {
 	display: flex;
@@ -385,7 +433,9 @@ form textarea {
 		font-size: 15px;
 	}
 	.contact_button.header_button {
-		margin: 0 40px;
+		margin: 0 30px;
+		font-size: 15px;
+		height: 60px;
 	}
 	.photograph-header img {
 		min-height: 150px;

@@ -20,6 +20,10 @@ export function mediaFactory(data) {
 			'',
 			video ? 'divImgVideo photoCardLink' : 'divImgVideo'
 		);
+		const playIcon = createElementDOM('i', '', 'fas fa-play');
+		video
+			? (playIcon.style.display = 'block')
+			: (playIcon.style.display = 'none');
 		const mediaFile = createElementDOM(video ? 'video' : 'img', '', '', [
 			{ key: 'src', value: video ? file : picture },
 			{ key: 'type', value: video ? 'video/mp4' : 'img/jpg' },
@@ -30,6 +34,7 @@ export function mediaFactory(data) {
 		const likeSpan = createElementDOM('span', '', 'likeSpan');
 		const like = createElementDOM('p', `${likes}`, 'numberOfLikes');
 		const heart = createElementDOM('i', '', 'fas fa-heart heartInCard');
+		mediaDiv.appendChild(playIcon);
 		mediaDiv.appendChild(mediaFile);
 		likeSpan.appendChild(like);
 		likeSpan.appendChild(heart);
@@ -48,6 +53,7 @@ export function mediaFactory(data) {
 		if (image) {
 			const img = createElementDOM('img', '', 'lightboxImg', [
 				{ key: 'src', value: picture },
+				{ key: 'alt', value: title },
 			]);
 			mediaDiv.appendChild(img);
 		} else if (video) {

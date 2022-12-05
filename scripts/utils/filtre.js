@@ -1,7 +1,8 @@
 import { displayPhotographPageMedia } from '../pages/photographer';
 import createElementDOM from '../utils/genericDom';
+import handleClickOnMedia from './lightbox';
 
-export const filter = (media) => {
+export const filtered = (media) => {
 	const parentFilterDiv = document.querySelector('.trierDiv');
 	const populariteDiv = document.querySelector('.popularite');
 	const hideFilterArrow = document.querySelector('.fa-angle-up');
@@ -19,7 +20,6 @@ export const filter = (media) => {
 		hiddenDiv.style.display = 'block';
 		sortMainDiv.style.display = 'none';
 	});
-
 	hideFilterArrow.addEventListener('click', () => {
 		hiddenDiv.style.display = 'none';
 		sortMainDiv.style.display = 'flex';
@@ -29,9 +29,13 @@ export const filter = (media) => {
 		const newMediaArray = media.sort((a, b) => {
 			return b.likes - a.likes;
 		});
+		console.log(newMediaArray);
 		displayPhotographPageMedia(newMediaArray);
 		hiddenDiv.style.display = 'none';
 		sortMainDiv.style.display = 'flex';
+		newMediaArray.forEach((media) => {
+			handleClickOnMedia(media);
+		});
 	});
 	dateDiv.addEventListener('click', () => {
 		const newMediaArray = media.sort((a, b) => {
@@ -41,6 +45,9 @@ export const filter = (media) => {
 		hiddenDiv.style.display = 'none';
 		sortMainDiv.style.display = 'flex';
 		paragraph.textContent = 'Date';
+		newMediaArray.forEach((media) => {
+			handleClickOnMedia(media);
+		});
 	});
 	titreDiv.addEventListener('click', () => {
 		const newMediaArray = media.sort((a, b) => {
@@ -50,5 +57,8 @@ export const filter = (media) => {
 		hiddenDiv.style.display = 'none';
 		sortMainDiv.style.display = 'flex';
 		paragraph.textContent = 'Titre';
+		newMediaArray.forEach((media) => {
+			handleClickOnMedia(media);
+		});
 	});
 };

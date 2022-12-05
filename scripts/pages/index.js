@@ -1,6 +1,4 @@
 import photographerFactory from '../factories/photographer.js';
-import contactForm from '../utils/contactForm.js';
-import { submitForm } from '../utils/contactFormValidation.js';
 import { fetchData } from '../utils/fetchData.js';
 
 const getPhotographers = async () => {
@@ -23,7 +21,4 @@ async function init() {
 	const { photographers } = await getPhotographers();
 	displayData(photographers);
 }
-
 init();
-contactForm();
-submitForm();

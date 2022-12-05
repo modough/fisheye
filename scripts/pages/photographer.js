@@ -3,7 +3,7 @@ import photographerFactory from '../factories/photographer.js';
 import contactForm from '../utils/contactForm.js';
 import { submitForm } from '../utils/contactFormValidation.js';
 import { fetchData } from '../utils/fetchData.js';
-import { filter } from '../utils/filtre.js';
+import { filtered } from '../utils/filtre.js';
 import handleClickOnMedia from '../utils/lightbox.js';
 import numberOfLikes from '../utils/likes.js';
 
@@ -72,7 +72,7 @@ const init = async () => {
 	displayLightbox(medias);
 	contactForm();
 	submitForm(medias);
-	filter(medias);
+	filtered(medias);
 	handleClickOnMedia();
 };
 init();

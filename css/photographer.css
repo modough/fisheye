@@ -121,7 +121,9 @@ body {
 	display: none;
 	align-items: center;
 	flex-direction: column;
-	position: relative;
+	position: absolute;
+	z-index: 1;
+	left: 180px;
 	width: 170px;
 	padding: 5px 0;
 	background-color: #901c1c;
@@ -148,7 +150,7 @@ body {
 }
 .photos {
 	display: flex;
-	padding-top: 30px;
+
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
@@ -267,16 +269,18 @@ body {
 .lightbox_medias video {
 	min-width: 1200px;
 	min-height: 700px;
-	object-fit: contain;
+	object-fit: cover;
 	object-position: center;
 	max-width: 1200px;
 	max-height: 700px;
 	animation: lightboxAnimation 0.5s;
+	box-shadow: 3px 0px 3px 0px rgb(0 0 0 / 60%);
+	border-radius: 5px;
 }
 .lightbox_medias p {
 	color: #901c1c;
 	font-weight: 700;
-	font-size: 15px;
+	font-size: 24px;
 }
 
 /*-------------------- Contact Form -------------------*/

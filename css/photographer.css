@@ -77,19 +77,21 @@ body {
 }
 
 /*----------------------- Tri select option ---------------------*/
+
+.trierDiv {
+	display: flex;
+
+	justify-content: flex-start;
+	padding-left: 100px;
+	padding-top: 50px;
+}
 .trierDiv p {
 	font-weight: 700;
 	padding-right: 10px;
 	font-size: 18px;
 }
-.trierDiv {
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-	padding-left: 100px;
-	padding-top: 50px;
-}
-.popularite {
+
+.oneFilterOnly {
 	display: flex;
 	align-items: center;
 	position: relative;
@@ -102,49 +104,42 @@ body {
 	border-radius: 5px;
 	font-size: 18px;
 	font-weight: 700;
+	cursor: pointer;
 }
 .popularite p {
 	font-size: 18px;
 }
-.popularite .fas {
+.fas.fa-angle-down,
+.fas.fa-angle-up {
 	position: absolute;
 	cursor: pointer;
 	right: 24px;
 	top: 24px;
 	font-size: 24px;
 }
-.popularite .fa-angle-up {
+.trierOption {
 	display: none;
+	align-items: center;
+	flex-direction: column;
+	position: relative;
+	width: 170px;
+	padding: 5px 0;
+	background-color: #901c1c;
+	color: #fafafa;
+	border-radius: 5px;
+	font-size: 18px;
+	font-weight: 700;
+}
+.popularite,
+.date,
+.titre {
+	padding: 0 30px;
+	cursor: pointer;
 }
 .date {
-	display: none;
-	width: 170px;
-	height: 69px;
-	padding: 10px 30px;
-	background-color: #901c1c;
-	color: #fafafa;
-	border: none;
-	border-radius: 5px;
-	font-size: 18px;
-	font-weight: 700;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
 }
-.titre {
-	display: none;
-	width: 170px;
-	height: 69px;
-	padding: 10px 30px;
-	background-color: #901c1c;
-	color: #fafafa;
-	border: none;
-	border-radius: 5px;
-	font-size: 18px;
-	font-weight: 700;
-}
-.trierDiv select option {
-	font-size: 18px;
-	font-weight: 700;
-}
-
 /*-------------------- MediaCards ----------------------*/
 
 .photograph-porfolio {
@@ -418,6 +413,7 @@ form textarea {
 	.logo {
 		height: 40px;
 	}
+
 	.photograph-header .headerCardDiv {
 		padding: 20px;
 		width: 550px;

@@ -1,6 +1,6 @@
 import createElementDOM from '../utils/genericDom';
 
-export function mediaFactory(data) {
+export const mediaFactory = (data) => {
 	const { title, image, likes, video, photographerId } = data;
 
 	const picture = `assets/medias/${photographerId}/${image}`;
@@ -75,4 +75,5 @@ export function mediaFactory(data) {
 		return mediaDiv;
 	};
 	return { getMediaCardDOM, getLightboxCardDOM };
-}
+};
+export default mediaFactory;

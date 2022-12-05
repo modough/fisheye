@@ -90,3 +90,10 @@ article img {
 	height: 12px;
 	color: #757575;
 }
+
+@media screen and (max-width: 768px) {
+	.photographer_section {
+		display: flex;
+		flex-direction: column;
+	}
+}

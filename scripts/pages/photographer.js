@@ -3,6 +3,7 @@ import photographerFactory from '../factories/photographer.js';
 import contactForm from '../utils/contactForm.js';
 import { submitForm } from '../utils/contactFormValidation.js';
 import { fetchData } from '../utils/fetchData.js';
+import { filter } from '../utils/filtre.js';
 import handleClickOnMedia from '../utils/lightbox.js';
 import numberOfLikes from '../utils/likes.js';
 
@@ -33,7 +34,7 @@ const displayPhotographPageHeader = () => {
 };
 
 // display mediacards
-const displayPhotographPageMedia = (media) => {
+export function displayPhotographPageMedia(media) {
 	const parentDiv = document.querySelector('.photos');
 	parentDiv.innerHTML = '';
 	media.forEach((elmt) => {
@@ -41,7 +42,8 @@ const displayPhotographPageMedia = (media) => {
 		const mediaCardDOM = photographerModel.getMediaCardDOM();
 		parentDiv.appendChild(mediaCardDOM);
 	});
-};
+	numberOfLikes(medias);
+}
 
 // display lightbox
 const displayLightbox = (media) => {
@@ -55,6 +57,7 @@ const displayLightbox = (media) => {
 	lightboxDiv.appendChild(closeBtn);
 	lightboxDiv.appendChild(leftChevron);
 	lightboxDiv.appendChild(rightChevron);
+
 	media.forEach((link) => {
 		const lightboxModel = mediaFactory(link);
 		const lightboxCardDOM = lightboxModel.getLightboxCardDOM();
@@ -67,9 +70,9 @@ const init = async () => {
 	displayPhotographPageHeader();
 	displayPhotographPageMedia(medias);
 	displayLightbox(medias);
+	contactForm();
+	submitForm(medias);
+	filter(medias);
 	handleClickOnMedia();
 };
 init();
-contactForm();
-submitForm(medias);
-numberOfLikes(medias);

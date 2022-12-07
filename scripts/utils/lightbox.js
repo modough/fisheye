@@ -13,7 +13,7 @@ export const handleClickOnMedia = () => {
 		link.addEventListener('click', (e) => {
 			e.preventDefault();
 			lightbox.classList.add('active');
-			children[index].classList.add('active');
+			children[index]?.classList.add('active');
 		})
 	);
 	// we close the lightbox and remove all active classes

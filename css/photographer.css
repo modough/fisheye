@@ -125,17 +125,22 @@ body {
 	z-index: 1;
 	left: 180px;
 	width: 170px;
-	padding: 5px 0;
 	background-color: #901c1c;
 	color: #fafafa;
 	border-radius: 5px;
 	font-size: 18px;
 	font-weight: 700;
 }
+.trierOption > div:hover {
+	background-color: #db8876;
+}
+.trierOption > div p {
+	margin: 0;
+}
 .popularite,
 .date,
 .titre {
-	padding: 0 30px;
+	padding: 20px 30px;
 	cursor: pointer;
 }
 .date {

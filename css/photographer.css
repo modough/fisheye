@@ -363,7 +363,6 @@ form textarea {
 	background-color: #db8876;
 	width: 50%;
 	flex-direction: column-reverse;
-	align-items: center;
 	justify-content: space-between;
 	padding: 35px;
 	position: relative;
@@ -372,6 +371,14 @@ form textarea {
 }
 .validateFormMessage .message {
 	font-size: 30px;
+	text-align: center;
+}
+.validateFormMessage h1 {
+	font-size: 64px;
+	font-weight: 400;
+	margin: 0;
+	color: black;
+	text-align: left;
 }
 .validateFormMessage .closeForm {
 	position: absolute;

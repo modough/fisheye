@@ -19,6 +19,9 @@ const { photographers, media } = await getPhotographers();
 const medias = await media.filter(
 	(media) => media.photographerId === parseInt(photographerId)
 );
+const professionals = await photographers.filter(
+	(photographer) => photographer.id === parseInt(photographerId)
+);
 
 //display photograph contact information
 const foundPhotographer = photographers.find(
@@ -71,7 +74,7 @@ const init = async () => {
 	displayPhotographPageMedia(medias);
 	displayLightbox(medias);
 	contactForm();
-	submitForm(medias);
+	submitForm(professionals);
 	filtered(medias);
 	handleClickOnMedia();
 };

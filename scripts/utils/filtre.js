@@ -26,39 +26,33 @@ export const filtered = (media) => {
 	});
 
 	populariteDiv.addEventListener('click', () => {
-		const newMediaArray = media.sort((a, b) => {
+		const newMediaArray = Array.from(media).sort((a, b) => {
 			return b.likes - a.likes;
 		});
-		console.log(newMediaArray);
 		displayPhotographPageMedia(newMediaArray);
 		hiddenDiv.style.display = 'none';
 		sortMainDiv.style.display = 'flex';
-		newMediaArray.forEach((media) => {
-			handleClickOnMedia(media);
-		});
+		paragraph.textContent = 'Popularité';
+		handleClickOnMedia(newMediaArray);
 	});
 	dateDiv.addEventListener('click', () => {
-		const newMediaArray = media.sort((a, b) => {
+		const newMediaArray = Array.from(media).sort((a, b) => {
 			return new Date(b.date) - new Date(a.date);
 		});
 		displayPhotographPageMedia(newMediaArray);
 		hiddenDiv.style.display = 'none';
 		sortMainDiv.style.display = 'flex';
 		paragraph.textContent = 'Date';
-		newMediaArray.forEach((media) => {
-			handleClickOnMedia(media);
-		});
+		handleClickOnMedia(newMediaArray);
 	});
 	titreDiv.addEventListener('click', () => {
-		const newMediaArray = media.sort((a, b) => {
+		const newMediaArray = Array.from(media).sort((a, b) => {
 			return a.title.localeCompare(b.title);
 		});
 		displayPhotographPageMedia(newMediaArray);
 		hiddenDiv.style.display = 'none';
 		sortMainDiv.style.display = 'flex';
 		paragraph.textContent = 'Titre';
-		newMediaArray.forEach((media) => {
-			handleClickOnMedia(media);
-		});
+		handleClickOnMedia(newMediaArray);
 	});
 };

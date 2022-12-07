@@ -21,7 +21,7 @@ export const setErrorMsg = (elmt, validMessage) => {
 };
 
 // valid message function
-export const setValidMsg = (elmt, validMessage) => {
+const setValidMsg = (elmt, validMessage) => {
 	const parent = elmt.parentElement;
 	if (parent.classList.contains('valid')) {
 		parent.classList.remove('valid');
@@ -54,7 +54,7 @@ const genericValidate = ({
 };
 
 // creating function for validation steps
-export const validate = () => {
+const validate = () => {
 	//firstname validity check
 	genericValidate({
 		input: firstnameInput,
@@ -87,12 +87,18 @@ export const validate = () => {
 };
 
 // Submit form
-export const submitForm = () => {
+export const submitForm = (professionals) => {
+	console.log(professionals[0].name);
 	const form = document.querySelector('#form');
 	const firstname = document.querySelector('.first');
 	const lastname = document.querySelector('.last');
 	const email = document.querySelector('.email');
 	const message = document.querySelector('.message');
+	const main = document.getElementById('main');
+	const modal = document.getElementById('contact_modal');
+	const validationMessage = document.querySelector('.validateFormMessage');
+	const nom = document.querySelector('.validate-name');
+	const closeModalButton = document.querySelector('.closeForm');
 	form.addEventListener('submit', (e) => {
 		validate();
 		e.preventDefault();
@@ -107,13 +113,11 @@ export const submitForm = () => {
 			console.log('Nom: ' + lastnameInput.value);
 			console.log('Email: ' + emailInput.value);
 			console.log('Message: ' + messageInput.value);
-			const main = document.getElementById('main');
+			nom.innerText = professionals[0].name;
 			main.style.display = 'none';
-			const modal = document.getElementById('contact_modal');
 			modal.style.display = 'none';
-			const validationMessage = document.querySelector('.validateFormMessage');
 			validationMessage.style.display = 'flex';
-			const closeModalButton = document.querySelector('.closeForm');
+
 			closeModalButton.addEventListener('click', () => {
 				validationMessage.style.display = 'none';
 				main.style.display = 'block';
@@ -122,3 +126,4 @@ export const submitForm = () => {
 		}
 	});
 };
+export default submitForm;

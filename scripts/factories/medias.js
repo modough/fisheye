@@ -34,10 +34,12 @@ export const mediaFactory = (data) => {
 		const likeSpan = createElementDOM('span', '', 'likeSpan');
 		const like = createElementDOM('p', `${likes}`, 'numberOfLikes');
 		const heart = createElementDOM('i', '', 'fas fa-heart heartInCard');
+		const emptyHeart = createElementDOM('i', '', 'fas fa-heart emptyHeart');
 		mediaDiv.appendChild(playIcon);
 		mediaDiv.appendChild(mediaFile);
 		likeSpan.appendChild(like);
 		likeSpan.appendChild(heart);
+		likeSpan.appendChild(emptyHeart);
 		infoDiv.appendChild(titre);
 		infoDiv.appendChild(likeSpan);
 		ahref.appendChild(mediaDiv);

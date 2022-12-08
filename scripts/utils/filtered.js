@@ -1,5 +1,8 @@
-import { displayPhotographPageMedia } from '../pages/photographer';
-import createElementDOM from '../utils/genericDom';
+import {
+	displayPhotographPageMedia,
+	displayLightbox,
+} from '../pages/photographer';
+import createElementDOM from './genericDom';
 import handleClickOnMedia from './lightbox';
 
 export const filtered = (media) => {
@@ -33,6 +36,7 @@ export const filtered = (media) => {
 		hiddenDiv.style.display = 'none';
 		sortMainDiv.style.display = 'flex';
 		paragraph.textContent = 'Popularité';
+		displayLightbox(newMediaArray);
 		handleClickOnMedia(newMediaArray);
 	});
 	dateDiv.addEventListener('click', () => {
@@ -43,6 +47,7 @@ export const filtered = (media) => {
 		hiddenDiv.style.display = 'none';
 		sortMainDiv.style.display = 'flex';
 		paragraph.textContent = 'Date';
+		displayLightbox(newMediaArray);
 		handleClickOnMedia(newMediaArray);
 	});
 	titreDiv.addEventListener('click', () => {
@@ -53,6 +58,7 @@ export const filtered = (media) => {
 		hiddenDiv.style.display = 'none';
 		sortMainDiv.style.display = 'flex';
 		paragraph.textContent = 'Titre';
+		displayLightbox(newMediaArray);
 		handleClickOnMedia(newMediaArray);
 	});
 };

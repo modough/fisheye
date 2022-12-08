@@ -3,9 +3,9 @@ import photographerFactory from '../factories/photographer.js';
 import contactForm from '../utils/contactForm.js';
 import { submitForm } from '../utils/contactFormValidation.js';
 import { fetchData } from '../utils/fetchData.js';
-import { filtered } from '../utils/filtre.js';
+import { filtered } from '../utils/filtered.js';
 import handleClickOnMedia from '../utils/lightbox.js';
-import numberOfLikes from '../utils/likes.js';
+import handleNumberOfLikes from '../utils/likes.js';
 
 // Retrieving data from json file
 async function getPhotographers() {
@@ -37,20 +37,22 @@ const displayPhotographPageHeader = () => {
 };
 
 // display mediacards
-export function displayPhotographPageMedia(media) {
-	const parentDiv = document.querySelector('.photos');
+export function displayPhotographPageMedia(medias) {
+	const parentDiv = document.querySelector('#photos');
 	parentDiv.innerHTML = '';
-	media.forEach((elmt) => {
+
+	medias.forEach((elmt) => {
 		const photographerModel = mediaFactory(elmt);
 		const mediaCardDOM = photographerModel.getMediaCardDOM();
 		parentDiv.appendChild(mediaCardDOM);
 	});
-	numberOfLikes(medias);
+	handleNumberOfLikes(medias);
 }
 
 // display lightbox
-const displayLightbox = (media) => {
+export function displayLightbox(medias) {
 	const lightboxDiv = document.querySelector('#lightbox');
+	lightboxDiv.innerHTML = '';
 	const closeBtn = document.createElement('i');
 	const leftChevron = document.createElement('i');
 	const rightChevron = document.createElement('i');
@@ -61,12 +63,12 @@ const displayLightbox = (media) => {
 	lightboxDiv.appendChild(leftChevron);
 	lightboxDiv.appendChild(rightChevron);
 
-	media.forEach((link) => {
+	medias.forEach((link) => {
 		const lightboxModel = mediaFactory(link);
 		const lightboxCardDOM = lightboxModel.getLightboxCardDOM();
 		lightboxDiv.appendChild(lightboxCardDOM);
 	});
-};
+}
 
 // init all
 const init = async () => {
@@ -75,7 +77,7 @@ const init = async () => {
 	displayLightbox(medias);
 	contactForm();
 	submitForm(professionals);
-	filtered(medias);
 	handleClickOnMedia();
+	filtered(medias);
 };
 init();

@@ -22,7 +22,7 @@ export const handleClickOnMedia = () => {
 		const selectedElement = document.querySelectorAll(
 			'.lightbox_medias.active'
 		)[0];
-		selectedElement.classList.remove('active');
+		selectedElement?.classList.remove('active');
 	});
 
 	// here we toggle the active class to display image per image

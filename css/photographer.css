@@ -208,9 +208,20 @@ body {
 	display: flex;
 	align-items: center;
 	gap: 5px;
-}
-.heartInCard {
 	cursor: pointer;
+}
+.fas.fa-heart.heartInCard {
+	display: block;
+}
+.fas.fa-heart.heartInCard.active {
+	display: none;
+}
+.fas.fa-heart.emptyHeart {
+	display: none;
+}
+.fas.fa-heart.emptyHeart.active {
+	display: block;
+	font-weight: 400;
 }
 
 /* ----------------------Lightbox--------------------------------*/

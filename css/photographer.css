@@ -80,7 +80,6 @@ body {
 
 .trierDiv {
 	display: flex;
-
 	justify-content: flex-start;
 	padding-left: 100px;
 	padding-top: 50px;
@@ -94,9 +93,9 @@ body {
 .oneFilterOnly {
 	display: flex;
 	align-items: center;
-	position: relative;
+
 	width: 170px;
-	height: 69px;
+	height: 60px;
 	padding: 10px 30px;
 	background-color: #901c1c;
 	color: #fafafa;
@@ -106,16 +105,28 @@ body {
 	font-weight: 700;
 	cursor: pointer;
 }
-.popularite p {
-	font-size: 18px;
+.mainDivParent {
+	position: relative;
 }
-.fas.fa-angle-down,
+
 .fas.fa-angle-up {
 	position: absolute;
 	cursor: pointer;
 	right: 24px;
-	top: 24px;
+	top: 20px;
 	font-size: 24px;
+}
+.fas.fa-angle-down {
+	position: absolute;
+	cursor: pointer;
+	left: 127px;
+	top: 20px;
+	font-size: 24px;
+	color: white;
+}
+.fas.fa-angle-up:hover,
+.fas.fa-angle-down:hover {
+	font-size: 30px;
 }
 .trierOption {
 	display: none;
@@ -137,6 +148,12 @@ body {
 .trierOption > div p {
 	margin: 0;
 }
+.trierOption .popularite {
+	border-radius: 5px 5px 0 0;
+}
+.trierOption .titre {
+	border-radius: 0 0 5px 5px;
+}
 .popularite,
 .date,
 .titre {
@@ -150,8 +167,7 @@ body {
 /*-------------------- MediaCards ----------------------*/
 
 .photograph-porfolio {
-	margin: 100px;
-	margin-bottom: 150px;
+	margin: 50px 100px 150px 100px;
 }
 .photos {
 	display: flex;

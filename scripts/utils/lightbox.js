@@ -2,6 +2,7 @@
 export const handleClickOnMedia = () => {
 	const lightbox = document.querySelector('#lightbox');
 	const children = Array.from(document.querySelectorAll('.lightbox_medias'));
+
 	const links = document.querySelectorAll('#photos img, video');
 	const closeBtn = document.querySelector('.fa-close');
 	const leftChevron = document.querySelector('.fa-chevron-left');
@@ -59,7 +60,7 @@ export const handleClickOnMedia = () => {
 	document.addEventListener('keydown', (e) => {
 		if (e.key === 'Enter') {
 			lightbox.classList.add('active');
-			children[0].classList.add('active');
+			children[0]?.classList.add('active');
 		}
 		if (e.key === 'Escape') {
 			lightbox.classList.remove('active');
@@ -77,7 +78,7 @@ export const handleClickOnMedia = () => {
 			if (indexOfElmt === children.length - 1) {
 				indexOfElmt = -1;
 			}
-			selectedElement.classList.remove('active');
+			selectedElement?.classList.remove('active');
 			const nextElement = children[indexOfElmt + 1];
 			nextElement.classList.add('active');
 		}

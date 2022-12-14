@@ -17,7 +17,7 @@ export default function photographerFactory(data) {
 		const bottomDiv = createElementDOM('div', '', 'bottomDiv');
 		const img = createElementDOM('img', '', '', [
 			{ key: 'src', value: picture },
-			{ key: 'alt', value: name },
+			{ key: 'alt', value: `${name} avatar` },
 		]);
 		const ville = createElementDOM('h3', `${city},`, 'ville');
 		const pays = createElementDOM('h3', `${country}`);

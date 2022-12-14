@@ -27,7 +27,7 @@ export const mediaFactory = (data) => {
 		const mediaFile = createElementDOM(video ? 'video' : 'img', '', '', [
 			{ key: 'src', value: video ? file : picture },
 			{ key: 'type', value: video ? 'video/mp4' : 'img/jpg' },
-			{ key: 'aria-label', value: 'vous accedez à la lightbox' },
+			{ key: 'aria-label', value: `${title} dans la lightbox` },
 		]);
 		const infoDiv = createElementDOM('div', '', 'bottomCard');
 		const titre = createElementDOM('h2', `${title}`);
@@ -55,7 +55,7 @@ export const mediaFactory = (data) => {
 		if (image) {
 			const img = createElementDOM('img', '', 'lightboxImg', [
 				{ key: 'src', value: picture },
-				{ key: 'alt', value: title },
+				{ key: 'alt', value: `${title} dans la lightbox` },
 			]);
 			mediaDiv.appendChild(img);
 		} else if (video) {
@@ -70,7 +70,7 @@ export const mediaFactory = (data) => {
 			mp4.appendChild(src);
 			mediaDiv.appendChild(mp4);
 		}
-		const titleImg = createElementDOM('p', `${title}`);
+		const titleImg = createElementDOM('h2', `${title}`);
 
 		mediaDiv.appendChild(titleImg);
 

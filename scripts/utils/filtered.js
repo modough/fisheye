@@ -21,6 +21,16 @@ export const filtered = (media) => {
 	mainDivParent.appendChild(showFilterArrow);
 	parentFilterDiv.appendChild(mainDivParent);
 
+	const handleSort = (sortBy, title) => {
+		const newMediaArray = Array.from(media).sort(sortBy);
+		displayPhotographPageMedia(newMediaArray);
+		hiddenDiv.style.display = 'none';
+		sortMainDiv.style.display = 'flex';
+		paragraph.textContent = title;
+		displayLightbox(newMediaArray);
+		handleClickOnMedia(newMediaArray);
+	};
+
 	showFilterArrow.addEventListener('click', () => {
 		hiddenDiv.style.display = 'block';
 		sortMainDiv.style.display = 'none';
@@ -30,48 +40,22 @@ export const filtered = (media) => {
 		sortMainDiv.style.display = 'flex';
 	});
 	sortMainDiv.addEventListener('click', () => {
-		const newMediaArray = Array.from(media).sort((a, b) => {
-			return b.likes - a.likes;
-		});
-		displayPhotographPageMedia(newMediaArray);
-		hiddenDiv.style.display = 'none';
-		sortMainDiv.style.display = 'flex';
-		paragraph.textContent = 'Popularité';
-		displayLightbox(newMediaArray);
-		handleClickOnMedia(newMediaArray);
+		hiddenDiv.style.display = 'block';
+		sortMainDiv.style.display = 'none';
 	});
 	populariteDiv.addEventListener('click', () => {
-		const newMediaArray = Array.from(media).sort((a, b) => {
+		handleSort((a, b) => {
 			return b.likes - a.likes;
-		});
-		displayPhotographPageMedia(newMediaArray);
-		hiddenDiv.style.display = 'none';
-		sortMainDiv.style.display = 'flex';
-		paragraph.textContent = 'Popularité';
-		console.log(paragraph);
-		displayLightbox(newMediaArray);
-		handleClickOnMedia(newMediaArray);
+		}, 'Popularité');
 	});
 	dateDiv.addEventListener('click', () => {
-		const newMediaArray = Array.from(media).sort((a, b) => {
+		handleSort((a, b) => {
 			return new Date(b.date) - new Date(a.date);
-		});
-		displayPhotographPageMedia(newMediaArray);
-		hiddenDiv.style.display = 'none';
-		sortMainDiv.style.display = 'flex';
-		paragraph.textContent = 'Date';
-		displayLightbox(newMediaArray);
-		handleClickOnMedia(newMediaArray);
+		}, 'Date');
 	});
 	titreDiv.addEventListener('click', () => {
-		const newMediaArray = Array.from(media).sort((a, b) => {
+		handleSort((a, b) => {
 			return a.title.localeCompare(b.title);
-		});
-		displayPhotographPageMedia(newMediaArray);
-		hiddenDiv.style.display = 'none';
-		sortMainDiv.style.display = 'flex';
-		paragraph.textContent = 'Titre';
-		displayLightbox(newMediaArray);
-		handleClickOnMedia(newMediaArray);
+		}, 'Titre');
 	});
 };

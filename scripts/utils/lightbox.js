@@ -22,6 +22,10 @@ export const handleClickOnMedia = () => {
 	// open lightbox
 	const open = (index) => {
 		lightbox.classList.add('active');
+		const selectedElement = document.querySelectorAll(
+			'.lightbox_medias.active'
+		)[0];
+		selectedElement?.classList.remove('active');
 		children[index]?.classList.add('active');
 	};
 	// we close the lightbox and remove all active classes
@@ -30,7 +34,6 @@ export const handleClickOnMedia = () => {
 		const selectedElement = document.querySelectorAll(
 			'.lightbox_medias.active'
 		)[0];
-
 		selectedElement?.classList.remove('active');
 	};
 
@@ -44,7 +47,6 @@ export const handleClickOnMedia = () => {
 		if (indexOfElmt === 0) {
 			indexOfElmt = children.length;
 		}
-
 		const nextElement = children[indexOfElmt - 1];
 		nextElement?.classList.add('active');
 		selectedElement.classList.remove('active');
@@ -58,7 +60,6 @@ export const handleClickOnMedia = () => {
 		if (indexOfElmt === children.length - 1) {
 			indexOfElmt = -1;
 		}
-
 		const nextElement = children[indexOfElmt + 1];
 		nextElement.classList.add('active');
 		selectedElement?.classList.remove('active');
@@ -78,11 +79,10 @@ export const handleClickOnMedia = () => {
 	});
 
 	// handle Keyboard navigation
-	links.forEach((link, index) =>
+	links.forEach((link) =>
 		link.addEventListener('keydown', (e) => {
-			e.preventDefault();
 			if (e.key === 'Enter') {
-				open(index);
+				open();
 			}
 			if (e.key === 'Escape') {
 				close();

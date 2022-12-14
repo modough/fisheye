@@ -87,8 +87,7 @@ const validate = () => {
 };
 
 // Submit form
-export const submitForm = (professionals) => {
-	console.log(professionals[0].name);
+export const submitForm = (photographer) => {
 	const form = document.querySelector('#form');
 	const firstname = document.querySelector('.first');
 	const lastname = document.querySelector('.last');
@@ -113,7 +112,7 @@ export const submitForm = (professionals) => {
 			console.log('Nom: ' + lastnameInput.value);
 			console.log('Email: ' + emailInput.value);
 			console.log('Message: ' + messageInput.value);
-			nom.innerText = professionals[0].name;
+			nom.innerText = photographer.name;
 			main.style.display = 'none';
 			modal.style.display = 'none';
 			validationMessage.style.display = 'flex';

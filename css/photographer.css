@@ -237,7 +237,8 @@ body {
 }
 .fas.fa-heart.emptyHeart.active {
 	display: block;
-	font-weight: 400;
+	color: #d3573c;
+	font-size: 24px;
 }
 
 /* ----------------------Lightbox--------------------------------*/
@@ -300,17 +301,16 @@ body {
 }
 .lightbox_medias img,
 .lightbox_medias video {
-	min-width: 1200px;
 	min-height: 700px;
 	object-fit: cover;
 	object-position: center;
-	max-width: 1200px;
+
 	max-height: 700px;
 	animation: lightboxAnimation 0.5s;
 	box-shadow: 3px 0px 3px 0px rgb(0 0 0 / 60%);
 	border-radius: 5px;
 }
-.lightbox_medias p {
+.lightbox_medias h2 {
 	color: #901c1c;
 	font-weight: 700;
 	font-size: 24px;
@@ -420,7 +420,11 @@ form textarea {
 	padding: 20px;
 	cursor: pointer;
 }
-
+.validate-name {
+	font-size: 64px;
+	font-weight: 400;
+	margin: 0;
+}
 /*---------------------- bottom sticker for daily price and total likes --------------*/
 .priceAndLikes {
 	width: 400px;
@@ -460,8 +464,10 @@ form textarea {
 
 	.photograph-header .headerCardDiv {
 		padding: 20px;
-		width: 550px;
-		height: 200px;
+		flex-direction: column;
+
+		height: 450px;
+		margin: 0;
 	}
 	.contact-userInfo h2 {
 		font-size: 30px;
@@ -497,5 +503,18 @@ form textarea {
 	}
 	.photos .photoCard {
 		margin-bottom: 50px;
+	}
+}
+@media screen and (max-width: 900px) {
+	.photos {
+		justify-content: center;
+	}
+}
+@media screen and (max-width: 1016px) {
+	.contact-userInfo h2 {
+		font-size: 40px;
+	}
+	.photograph-header .headerCardDiv {
+		margin: 0;
 	}
 }

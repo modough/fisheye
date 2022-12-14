@@ -13,35 +13,27 @@ export const handleClickOnMedia = () => {
 	links.forEach((link, index) =>
 		link.addEventListener('click', (e) => {
 			e.preventDefault();
-			lightbox.classList.add('active');
-			children[index]?.classList.add('active');
+			open(index);
 		})
 	);
+
+	// open lightbox
+	const open = (index) => {
+		lightbox.classList.add('active');
+		children[index]?.classList.add('active');
+	};
 	// we close the lightbox and remove all active classes
-	closeBtn.addEventListener('click', () => {
+	const close = () => {
 		lightbox.classList.remove('active');
 		const selectedElement = document.querySelectorAll(
 			'.lightbox_medias.active'
 		)[0];
+
 		selectedElement?.classList.remove('active');
-	});
+	};
 
-	// here we toggle the active class to display image per image
-	rightChevron.addEventListener('click', () => {
-		const selectedElement = document.querySelectorAll(
-			'.lightbox_medias.active'
-		)[0];
-		let indexOfElmt = children.indexOf(selectedElement);
-
-		if (indexOfElmt === children.length - 1) {
-			indexOfElmt = -1;
-		}
-		selectedElement.classList.remove('active');
-		const nextElement = children[indexOfElmt + 1];
-		nextElement.classList.add('active');
-	});
-
-	leftChevron.addEventListener('click', () => {
+	// here we toggle the active class throughout the array to display image per image
+	const previous = () => {
 		const selectedElement = document.querySelectorAll(
 			'.lightbox_medias.active'
 		)[0];
@@ -50,50 +42,53 @@ export const handleClickOnMedia = () => {
 		if (indexOfElmt === 0) {
 			indexOfElmt = children.length;
 		}
-		selectedElement.classList.remove('active');
+
 		const nextElement = children[indexOfElmt - 1];
+		nextElement?.classList.add('active');
+		selectedElement.classList.remove('active');
+	};
+	const next = () => {
+		const selectedElement = document.querySelectorAll(
+			'.lightbox_medias.active'
+		)[0];
+		let indexOfElmt = children.indexOf(selectedElement);
+
+		if (indexOfElmt === children.length - 1) {
+			indexOfElmt = -1;
+		}
+
+		const nextElement = children[indexOfElmt + 1];
 		nextElement.classList.add('active');
+		selectedElement?.classList.remove('active');
+	};
+
+	// on click event
+	closeBtn.addEventListener('click', () => {
+		close();
+	});
+
+	rightChevron.addEventListener('click', () => {
+		next();
+	});
+
+	leftChevron.addEventListener('click', () => {
+		previous();
 	});
 
 	// handle Keyboard navigation
-
 	document.addEventListener('keydown', (e) => {
 		if (e.key === 'Enter') {
 			lightbox.classList.add('active');
-			children[0]?.classList.add('active');
+			children[0].classList.add('active');
 		}
 		if (e.key === 'Escape') {
-			lightbox.classList.remove('active');
-			const selectedElement = document.querySelectorAll(
-				'.lightbox_medias.active'
-			)[0];
-			selectedElement.classList.remove('active');
+			close();
 		}
 		if (e.key === 'ArrowRight') {
-			const selectedElement = document.querySelectorAll(
-				'.lightbox_medias.active'
-			)[0];
-			let indexOfElmt = children.indexOf(selectedElement);
-
-			if (indexOfElmt === children.length - 1) {
-				indexOfElmt = -1;
-			}
-			selectedElement?.classList.remove('active');
-			const nextElement = children[indexOfElmt + 1];
-			nextElement.classList.add('active');
+			next();
 		}
 		if (e.key === 'ArrowLeft') {
-			const selectedElement = document.querySelectorAll(
-				'.lightbox_medias.active'
-			)[0];
-			let indexOfElmt = children.indexOf(selectedElement);
-
-			if (indexOfElmt === 0) {
-				indexOfElmt = children.length;
-			}
-			selectedElement.classList.remove('active');
-			const nextElement = children[indexOfElmt - 1];
-			nextElement.classList.add('active');
+			previous();
 		}
 	});
 };

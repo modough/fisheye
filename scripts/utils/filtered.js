@@ -48,6 +48,7 @@ export const filtered = (media) => {
 		hiddenDiv.style.display = 'none';
 		sortMainDiv.style.display = 'flex';
 		paragraph.textContent = 'Popularité';
+		console.log(paragraph);
 		displayLightbox(newMediaArray);
 		handleClickOnMedia(newMediaArray);
 	});

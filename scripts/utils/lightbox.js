@@ -3,7 +3,9 @@ export const handleClickOnMedia = () => {
 	const lightbox = document.querySelector('#lightbox');
 	const children = Array.from(document.querySelectorAll('.lightbox_medias'));
 
-	const links = document.querySelectorAll('#photos img, video');
+	const links = document.querySelectorAll(
+		'#photos a[href$=".mp4"], a[href$=".jpg"]'
+	);
 	const closeBtn = document.querySelector('.fa-close');
 	const leftChevron = document.querySelector('.fa-chevron-left');
 	const rightChevron = document.querySelector('.fa-chevron-right');
@@ -76,20 +78,22 @@ export const handleClickOnMedia = () => {
 	});
 
 	// handle Keyboard navigation
-	document.addEventListener('keydown', (e) => {
-		if (e.key === 'Enter') {
-			lightbox.classList.add('active');
-			children[0].classList.add('active');
-		}
-		if (e.key === 'Escape') {
-			close();
-		}
-		if (e.key === 'ArrowRight') {
-			next();
-		}
-		if (e.key === 'ArrowLeft') {
-			previous();
-		}
-	});
+	links.forEach((link, index) =>
+		link.addEventListener('keydown', (e) => {
+			e.preventDefault();
+			if (e.key === 'Enter') {
+				open(index);
+			}
+			if (e.key === 'Escape') {
+				close();
+			}
+			if (e.key === 'ArrowRight') {
+				next();
+			}
+			if (e.key === 'ArrowLeft') {
+				previous();
+			}
+		})
+	);
 };
 export default handleClickOnMedia;

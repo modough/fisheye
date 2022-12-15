@@ -12,39 +12,38 @@
   <body>
     <main id="main">
       <header>
-        <a href="/"><img src="assets/images/logo.png" class="logo" alt="Fisheye Homepage" title="Logo Fisheye"/></a>
+        <a href="/"><img src="assets/images/logo.png" class="logo" alt="Fisheye Homepage" title="Logo Fisheye" role="img"/></a>
       </header>
-      <div id="contact-container">
+      <section id="contact-container">
         <div class="photograph-header"></div>
         <div class="trierDiv" aria-label="selecteur de tri des photos">
             <p>Trier par</p>
             <div class="trierOption">
-              <div class="popularite">
+              <div class="popularite" tabindex="0">
                 <p>Popularité</p>
               </div>
-              <i class="fas fa-angle-up"></i>
-              <div class="date">
+              <i class="fas fa-angle-up" tabindex="0"></i>
+              <div class="date" tabindex="0">
                 <p>Date</p>
               </div>
-              <div class="titre">
+              <div class="titre" tabindex="0    ">
                 <p>Titre</p>
               </div>
             </div>
           </div>
         <div class="photograph-porfolio">
-          
           <div class="photos" id="photos"></div>
           <div class="lightbox" id="lightbox"></div>
         </div>
        
-      </div>
-      <div class="priceAndLikes">
+      </section>
+      <section class="priceAndLikes">
         <div class="totalLikes">
           <h3 class="totalNumberOfLikes">25</h3>
           <i class="fa fa-heart likesHeartTotal"></i>
         </div>
         <h3 class="price">300€ / jour</h3>
-      </div>
+      </section>
     </main>
    
     <div id="contact_modal">

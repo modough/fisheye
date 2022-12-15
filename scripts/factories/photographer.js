@@ -18,6 +18,7 @@ export default function photographerFactory(data) {
 		const img = createElementDOM('img', '', '', [
 			{ key: 'src', value: picture },
 			{ key: 'alt', value: `${name} avatar` },
+			{ key: 'role', value: 'img' },
 		]);
 		const ville = createElementDOM('h3', `${city},`, 'ville');
 		const pays = createElementDOM('h3', `${country}`);
@@ -45,6 +46,7 @@ export default function photographerFactory(data) {
 		const img = createElementDOM('img', '', '', [
 			{ key: 'src', value: picture },
 			{ key: 'alt', value: name },
+			{ key: 'role', value: 'img' },
 		]);
 		const ville = createElementDOM('h3', `${city},`);
 		const pays = createElementDOM('h3', `${country}`, 'country');

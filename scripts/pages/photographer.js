@@ -6,6 +6,7 @@ import { fetchData } from '../utils/fetchData.js';
 import { filtered } from '../utils/filtered.js';
 import handleClickOnMedia from '../utils/lightbox.js';
 import handleNumberOfLikes from '../utils/likes.js';
+import createElementDOM from '../utils/genericDom';
 
 // Retrieving data from json file
 async function getPhotographers() {
@@ -50,12 +51,16 @@ export function displayPhotographPageMedia(medias) {
 export function displayLightbox(medias) {
 	const lightboxDiv = document.querySelector('#lightbox');
 	lightboxDiv.innerHTML = '';
-	const closeBtn = document.createElement('i');
-	const leftChevron = document.createElement('i');
-	const rightChevron = document.createElement('i');
-	closeBtn.className = 'fa fa-close';
-	leftChevron.className = 'fas fa-chevron-left';
-	rightChevron.className = 'fas fa-chevron-right';
+	const closeBtn = createElementDOM('i', '', 'fa fa-close', [
+		{ key: 'tabindex', value: '1' },
+	]);
+	const leftChevron = createElementDOM('i', '', 'fa fa-chevron-left', [
+		{ key: 'tabindex', value: '2' },
+	]);
+	const rightChevron = createElementDOM('i', '', 'fas fa-chevron-right', [
+		{ key: 'tabindex', value: '3' },
+	]);
+
 	lightboxDiv.appendChild(closeBtn);
 	lightboxDiv.appendChild(leftChevron);
 	lightboxDiv.appendChild(rightChevron);

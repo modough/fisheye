@@ -12,7 +12,9 @@ export const filtered = (media) => {
 	const hideFilterArrow = document.querySelector('.fa-angle-up');
 	const showFilterArrow = createElementDOM('i', '', 'fas fa-angle-down');
 	const sortMainDiv = createElementDOM('div', '', 'oneFilterOnly');
-	const paragraph = createElementDOM('p', 'Popularité', '');
+	const paragraph = createElementDOM('p', 'Popularité', '', [
+		{ key: 'tabindex', value: '0' },
+	]);
 	const hiddenDiv = document.querySelector('.trierOption');
 	const dateDiv = document.querySelector('.date');
 	const titreDiv = document.querySelector('.titre');
@@ -43,6 +45,7 @@ export const filtered = (media) => {
 		hiddenDiv.style.display = 'block';
 		sortMainDiv.style.display = 'none';
 	});
+
 	populariteDiv.addEventListener('click', () => {
 		handleSort((a, b) => {
 			return b.likes - a.likes;
@@ -57,5 +60,46 @@ export const filtered = (media) => {
 		handleSort((a, b) => {
 			return a.title.localeCompare(b.title);
 		}, 'Titre');
+	});
+
+	// handling keyboard events
+	showFilterArrow.addEventListener('keydown', (e) => {
+		if (e.key === 'Enter') {
+			hiddenDiv.style.display = 'block';
+			sortMainDiv.style.display = 'none';
+		}
+	});
+	hideFilterArrow.addEventListener('keydown', (e) => {
+		if (e.key === 'Enter') {
+			hiddenDiv.style.display = 'none';
+			sortMainDiv.style.display = 'flex';
+		}
+	});
+	sortMainDiv.addEventListener('keydown', (e) => {
+		if (e.key === 'Enter') {
+			hiddenDiv.style.display = 'block';
+			sortMainDiv.style.display = 'none';
+		}
+	});
+	populariteDiv.addEventListener('keydown', (e) => {
+		if (e.key === 'Enter') {
+			handleSort((a, b) => {
+				return b.likes - a.likes;
+			}, 'Popularité');
+		}
+	});
+	dateDiv.addEventListener('keydown', (e) => {
+		if (e.key === 'Enter') {
+			handleSort((a, b) => {
+				return new Date(b.date) - new Date(a.date);
+			}, 'Date');
+		}
+	});
+	titreDiv.addEventListener('keydown', (e) => {
+		if (e.key === 'Enter') {
+			handleSort((a, b) => {
+				return a.title.localeCompare(b.title);
+			}, 'Titre');
+		}
 	});
 };

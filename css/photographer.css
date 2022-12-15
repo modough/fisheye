@@ -202,6 +202,7 @@ body {
 	border-radius: 5px;
 	object-fit: cover;
 	object-position: center;
+	cursor: pointer;
 }
 .photoCard:hover {
 	scale: 1.1;
@@ -237,7 +238,7 @@ body {
 }
 .fas.fa-heart.emptyHeart.active {
 	display: block;
-	color: #d3573c;
+	color: #f75814;
 	font-size: 24px;
 }
 
@@ -332,7 +333,7 @@ body {
 	position: fixed;
 	top: 10px;
 	left: 30%;
-	width: 669px;
+	width: 40%;
 	overflow-y: hidden;
 }
 .modal header {
@@ -342,15 +343,12 @@ body {
 	margin-bottom: 80px;
 	align-items: baseline;
 }
-.modal header > div {
-	display: flex;
-	flex-direction: column;
-}
+
 .modal header img {
 	cursor: pointer;
 }
 .modal header h1 {
-	font-size: 64px;
+	font-size: 54px;
 	font-weight: 400;
 	margin: 0;
 	color: black;
@@ -509,6 +507,11 @@ form textarea {
 	.photos {
 		justify-content: center;
 	}
+	.modal {
+		width: 65%;
+		left: 20%;
+		padding: 20px;
+	}
 }
 @media screen and (max-width: 1016px) {
 	.contact-userInfo h2 {
@@ -516,5 +519,13 @@ form textarea {
 	}
 	.photograph-header .headerCardDiv {
 		margin: 0;
+	}
+
+	.modal header {
+		flex-direction: row;
+		padding-top: 0;
+	}
+	.modal header h1 {
+		font-size: 40px;
 	}
 }

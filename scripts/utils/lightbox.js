@@ -3,21 +3,23 @@ export const handleClickOnMedia = () => {
 	const lightbox = document.querySelector('#lightbox');
 	const children = Array.from(document.querySelectorAll('.lightbox_medias'));
 
-	const links = document.querySelectorAll(
-		'#photos a[href$=".mp4"], a[href$=".jpg"]'
-	);
+	const links = document.querySelectorAll('#photos .divImgVideo');
 	const closeBtn = document.querySelector('.fa-close');
 	const leftChevron = document.querySelector('.fa-chevron-left');
 	const rightChevron = document.querySelector('.fa-chevron-right');
 
 	// here we display the lightbox and the image clicked on with the 'index' for links
 	// it has to match 'index' of children array before adding 'active'
-	links.forEach((link, index) =>
-		link.addEventListener('click', (e) => {
-			e.preventDefault();
+	links.forEach((link, index) => {
+		link.addEventListener('click', () => {
 			open(index);
-		})
-	);
+		});
+		link.addEventListener('keydown', (e) => {
+			if (e.key === 'Enter') {
+				open(index);
+			}
+		});
+	});
 
 	// open lightbox
 	const open = (index) => {
@@ -27,6 +29,7 @@ export const handleClickOnMedia = () => {
 		)[0];
 		selectedElement?.classList.remove('active');
 		children[index]?.classList.add('active');
+		children[index].setAttribute('aria-current', 'image');
 	};
 	// we close the lightbox and remove all active classes
 	const close = () => {
@@ -49,6 +52,7 @@ export const handleClickOnMedia = () => {
 		}
 		const nextElement = children[indexOfElmt - 1];
 		nextElement?.classList.add('active');
+		nextElement.setAttribute('aria-current', 'media de lightbox');
 		selectedElement.classList.remove('active');
 	};
 	const next = () => {
@@ -62,6 +66,7 @@ export const handleClickOnMedia = () => {
 		}
 		const nextElement = children[indexOfElmt + 1];
 		nextElement.classList.add('active');
+		nextElement.setAttribute('aria-current', 'media de lightbox');
 		selectedElement?.classList.remove('active');
 	};
 
@@ -79,21 +84,20 @@ export const handleClickOnMedia = () => {
 	});
 
 	// handle Keyboard navigation
-	links.forEach((link) =>
-		link.addEventListener('keydown', (e) => {
-			if (e.key === 'Enter') {
-				open();
-			}
-			if (e.key === 'Escape') {
-				close();
-			}
-			if (e.key === 'ArrowRight') {
-				next();
-			}
-			if (e.key === 'ArrowLeft') {
-				previous();
-			}
-		})
-	);
+	closeBtn.addEventListener('keydown', (e) => {
+		if (e.key === 'Enter') {
+			close();
+		}
+	});
+	rightChevron.addEventListener('keydown', (e) => {
+		if (e.key === 'Enter') {
+			next();
+		}
+	});
+	leftChevron.addEventListener('keydown', (e) => {
+		if (e.key === 'Enter') {
+			previous();
+		}
+	});
 };
 export default handleClickOnMedia;

@@ -8,17 +8,12 @@ export const mediaFactory = (data) => {
 
 	// Dom elements such as images and videos on photographer's page
 	const getMediaCardDOM = () => {
-		const ahref = createElementDOM('a', '', '', [
-			{ key: 'href', value: video ? file : picture },
-			{ key: 'type', value: video ? 'video/mp4' : 'img' },
-			{ key: 'title', value: title },
-			{ key: 'index', value: 0 },
-		]);
 		const card = createElementDOM('div', '', 'photoCard');
 		const mediaDiv = createElementDOM(
 			'div',
 			'',
-			video ? 'divImgVideo photoCardLink' : 'divImgVideo'
+			video ? 'divImgVideo photoCardLink' : 'divImgVideo',
+			[{ key: 'tabindex', value: '0' }]
 		);
 		const playIcon = createElementDOM('i', '', 'fas fa-play');
 		video
@@ -28,6 +23,7 @@ export const mediaFactory = (data) => {
 			{ key: 'src', value: video ? file : picture },
 			{ key: 'type', value: video ? 'video/mp4' : 'img/jpg' },
 			{ key: 'aria-label', value: `${title} dans la lightbox` },
+			{ key: 'role', value: video ? 'video' : 'img' },
 		]);
 		const infoDiv = createElementDOM('div', '', 'bottomCard');
 		const titre = createElementDOM('h2', `${title}`);
@@ -42,8 +38,8 @@ export const mediaFactory = (data) => {
 		likeSpan.appendChild(emptyHeart);
 		infoDiv.appendChild(titre);
 		infoDiv.appendChild(likeSpan);
-		ahref.appendChild(mediaDiv);
-		card.appendChild(ahref);
+
+		card.appendChild(mediaDiv);
 		card.appendChild(infoDiv);
 
 		return card;
@@ -56,6 +52,7 @@ export const mediaFactory = (data) => {
 			const img = createElementDOM('img', '', 'lightboxImg', [
 				{ key: 'src', value: picture },
 				{ key: 'alt', value: `${title} dans la lightbox` },
+				{ key: 'role', value: 'img' },
 			]);
 			mediaDiv.appendChild(img);
 		} else if (video) {
@@ -66,6 +63,7 @@ export const mediaFactory = (data) => {
 			const src = createElementDOM('source', '', '', [
 				{ key: 'src', value: file },
 				{ key: 'type', value: 'video/mp4' },
+				{ key: 'role', value: 'video' },
 			]);
 			mp4.appendChild(src);
 			mediaDiv.appendChild(mp4);

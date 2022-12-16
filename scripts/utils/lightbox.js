@@ -2,7 +2,7 @@
 export const handleClickOnMedia = () => {
 	const lightbox = document.querySelector('#lightbox');
 	const children = Array.from(document.querySelectorAll('.lightbox_medias'));
-
+	const main = document.querySelector('#main');
 	const links = document.querySelectorAll('#photos .divImgVideo');
 	const closeBtn = document.querySelector('.fa-close');
 	const leftChevron = document.querySelector('.fa-chevron-left');
@@ -23,17 +23,22 @@ export const handleClickOnMedia = () => {
 
 	// open lightbox
 	const open = (index) => {
+		main.setAttribute('aria-hidden', 'true');
 		lightbox.classList.add('active');
+		lightbox.setAttribute('aria-hidden', 'false');
 		const selectedElement = document.querySelectorAll(
 			'.lightbox_medias.active'
 		)[0];
 		selectedElement?.classList.remove('active');
 		children[index]?.classList.add('active');
-		children[index].setAttribute('aria-current', 'image');
+		children[index].setAttribute('aria-current', 'media de lightbox');
+		closeBtn.focus();
 	};
 	// we close the lightbox and remove all active classes
 	const close = () => {
+		main.setAttribute('aria-hidden', 'false');
 		lightbox.classList.remove('active');
+		lightbox.setAttribute('aria-hidden', 'true');
 		const selectedElement = document.querySelectorAll(
 			'.lightbox_medias.active'
 		)[0];
@@ -50,10 +55,12 @@ export const handleClickOnMedia = () => {
 		if (indexOfElmt === 0) {
 			indexOfElmt = children.length;
 		}
-		const nextElement = children[indexOfElmt - 1];
-		nextElement?.classList.add('active');
-		nextElement.setAttribute('aria-current', 'media de lightbox');
+		const prevElement = children[indexOfElmt - 1];
+		prevElement?.classList.add('active');
+		prevElement.setAttribute('aria-current', 'media de lightbox');
+
 		selectedElement.classList.remove('active');
+		selectedElement?.removeAttribute('aria-current');
 	};
 	const next = () => {
 		const selectedElement = document.querySelectorAll(
@@ -68,6 +75,7 @@ export const handleClickOnMedia = () => {
 		nextElement.classList.add('active');
 		nextElement.setAttribute('aria-current', 'media de lightbox');
 		selectedElement?.classList.remove('active');
+		selectedElement?.removeAttribute('aria-current');
 	};
 
 	// on click event

@@ -18,6 +18,7 @@ export const setErrorMsg = (elmt, validMessage) => {
 	pTag.innerText = validMessage;
 	pTag.style.color = '#f00';
 	pTag.style.fontSize = '15px';
+	pTag.style.margin = '0';
 };
 
 // valid message function

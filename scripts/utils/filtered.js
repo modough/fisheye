@@ -6,15 +6,16 @@ import createElementDOM from './genericDom';
 import handleClickOnMedia from './lightbox';
 
 export const filtered = (media) => {
+	const main = document.querySelector('#main');
 	const parentFilterDiv = document.querySelector('.trierDiv');
 	const mainDivParent = createElementDOM('div', '', 'mainDivParent');
 	const populariteDiv = document.querySelector('.popularite');
 	const hideFilterArrow = document.querySelector('.fa-angle-up');
 	const showFilterArrow = createElementDOM('i', '', 'fas fa-angle-down');
-	const sortMainDiv = createElementDOM('div', '', 'oneFilterOnly');
-	const paragraph = createElementDOM('p', 'Popularité', '', [
+	const sortMainDiv = createElementDOM('div', '', 'oneFilterOnly', [
 		{ key: 'tabindex', value: '0' },
 	]);
+	const paragraph = createElementDOM('p', 'Popularité', '');
 	const hiddenDiv = document.querySelector('.trierOption');
 	const dateDiv = document.querySelector('.date');
 	const titreDiv = document.querySelector('.titre');
@@ -23,6 +24,7 @@ export const filtered = (media) => {
 	mainDivParent.appendChild(showFilterArrow);
 	parentFilterDiv.appendChild(mainDivParent);
 
+	// creating generic function
 	const handleSort = (sortBy, title) => {
 		const newMediaArray = Array.from(media).sort(sortBy);
 		displayPhotographPageMedia(newMediaArray);
@@ -32,20 +34,27 @@ export const filtered = (media) => {
 		displayLightbox(newMediaArray);
 		handleClickOnMedia(newMediaArray);
 	};
-
-	showFilterArrow.addEventListener('click', () => {
+	const openFilter = () => {
 		hiddenDiv.style.display = 'block';
 		sortMainDiv.style.display = 'none';
-	});
-	hideFilterArrow.addEventListener('click', () => {
+		main.setAttribute('aria-hidden', 'true');
+		hiddenDiv.setAttribute('aria-hidden', 'false');
+		populariteDiv.focus();
+	};
+	const closeFilter = () => {
+		main.setAttribute('aria-hidden', 'false');
 		hiddenDiv.style.display = 'none';
+		hiddenDiv.setAttribute('aria-hidden', 'true');
 		sortMainDiv.style.display = 'flex';
+	};
+
+	// onClick function
+	hideFilterArrow.addEventListener('click', () => {
+		closeFilter();
 	});
 	sortMainDiv.addEventListener('click', () => {
-		hiddenDiv.style.display = 'block';
-		sortMainDiv.style.display = 'none';
+		openFilter();
 	});
-
 	populariteDiv.addEventListener('click', () => {
 		handleSort((a, b) => {
 			return b.likes - a.likes;
@@ -63,22 +72,14 @@ export const filtered = (media) => {
 	});
 
 	// handling keyboard events
-	showFilterArrow.addEventListener('keydown', (e) => {
-		if (e.key === 'Enter') {
-			hiddenDiv.style.display = 'block';
-			sortMainDiv.style.display = 'none';
-		}
-	});
 	hideFilterArrow.addEventListener('keydown', (e) => {
 		if (e.key === 'Enter') {
-			hiddenDiv.style.display = 'none';
-			sortMainDiv.style.display = 'flex';
+			closeFilter();
 		}
 	});
 	sortMainDiv.addEventListener('keydown', (e) => {
 		if (e.key === 'Enter') {
-			hiddenDiv.style.display = 'block';
-			sortMainDiv.style.display = 'none';
+			openFilter();
 		}
 	});
 	populariteDiv.addEventListener('keydown', (e) => {

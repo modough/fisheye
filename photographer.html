@@ -22,11 +22,11 @@
               <div class="popularite" tabindex="0">
                 <p>Popularité</p>
               </div>
-              <i class="fas fa-angle-up" tabindex="0"></i>
+              <i class="fas fa-angle-up"></i>
               <div class="date" tabindex="0">
                 <p>Date</p>
               </div>
-              <div class="titre" tabindex="0    ">
+              <div class="titre" tabindex="0">
                 <p>Titre</p>
               </div>
             </div>
@@ -46,47 +46,47 @@
       </section>
     </main>
    
-    <div id="contact_modal">
+    <section id="contact_modal" role=”dialog”>
 			<div class="modal">
 				<header>
           <div>
             <h1>Contactez-moi</h1>
             <h1 class="photographer-name"></h1>
           </div>
-          <img class="closeModal-btn" src="assets/icons/close.svg" role="button" aria-label="fermer le modal" alt="icone fermer modal"/>
+          <img class="closeModal-btn" src="assets/icons/close.svg" role="button" aria-label="fermer le modal" alt="icone fermer modal" tabindex="0"/>
         </header>
 				<form id="form" >
 					<div class="first">
 						<label for="first">Prénom</label>
-						<input type="text" id="first" >
+						<input type="text" id="first" aria-labelledby="first" tabindex="0">
             <p class="firtname-error"></p>
 					</div>
 					<div class="last">
 						<label for="last">Nom</label>
-						<input type="text" id="last">
+						<input type="text" id="last" aria-labelledby="last" tabindex="0">
             <p class="lastname-error"></p>
 					</div>
 					<div class="email">
 						<label for="email">Email</label>
-						<input type="email" id="email">
+						<input type="email" id="email" aria-labelledby="email" tabindex="0">
             <p class="email-error"></p>
 					</div>
 					<div class="message">
 						<label for="message">Message</label>
-						<textarea type="text" id="message" rows="4" cols="50"></textarea>
+						<textarea type="text" id="message" rows="4" cols="50" aria-labelledby="message" tabindex="0"></textarea>
             <p class="message-error"></p>
 					</div>
-          <button class="contact_button" >Envoyer</button>
+          <button class="contact_button" tabindex="0">Envoyer</button>
 				</form>
         
 			</div>
-		</div>
-    <div class="validateFormMessage">
+		</section>
+    <section class="validateFormMessage">
       <p class="message">Message envoyé ! Merci !</p>
       <p class="validate-name"></p>
       <h1>Contactez-moi</h1>
       <img class="closeForm" src="assets/icons/close.svg" role="button" aria-label="fermer le modal" alt="icone fermer modal"/>
-    </div>
+    </section>
     
     <script src="/polyfill.bundle.js"></script>
     <script src="/app2.bundle.js"></script>  

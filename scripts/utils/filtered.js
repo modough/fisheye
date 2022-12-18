@@ -21,7 +21,7 @@ export const filtered = (media) => {
 	const titreDiv = document.querySelector('.titre');
 	sortMainDiv.appendChild(paragraph);
 	mainDivParent.appendChild(sortMainDiv);
-	mainDivParent.appendChild(showFilterArrow);
+	sortMainDiv.appendChild(showFilterArrow);
 	parentFilterDiv.appendChild(mainDivParent);
 
 	// creating generic function

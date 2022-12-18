@@ -3,7 +3,11 @@ import { fetchData } from '../utils/fetchData.js';
 
 const getPhotographers = async () => {
 	// Penser à remplacer par les données récupérées dans le json
-	return fetchData('data/photographers.json');
+	const res = await fetchData('data/photographers.json');
+	const photographers = res.photographers;
+	return {
+		photographers,
+	};
 };
 
 async function displayData(photographers) {

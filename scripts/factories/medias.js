@@ -47,7 +47,7 @@ export const mediaFactory = (data) => {
 
 	// Dom elements such as images and videos on lightbox
 	const getLightboxCardDOM = () => {
-		const mediaDiv = createElementDOM('div', '', 'lightbox_medias');
+		const mediaDiv = createElementDOM('li', '', 'lightbox_medias');
 		if (image) {
 			const img = createElementDOM('img', '', 'lightboxImg', [
 				{ key: 'src', value: picture },

@@ -5,6 +5,7 @@ body {
 	position: relative;
 }
 .logo {
+	width: 200px;
 	height: 50px;
 	margin-left: 100px;
 }
@@ -22,10 +23,9 @@ body {
 	border-radius: 5px;
 }
 .photograph-header img {
-	max-width: 250px;
-	max-height: 250px;
-	min-height: 250px;
-	min-width: 250px;
+	width: 250px;
+	height: 250px;
+
 	border-radius: 50%;
 	object-fit: cover;
 	background-color: #dedede;
@@ -127,10 +127,7 @@ body {
 	font-size: 24px;
 	color: white;
 }
-.fas.fa-angle-up:hover,
-.fas.fa-angle-down:hover {
-	font-size: 30px;
-}
+
 .trierOption {
 	display: none;
 	align-items: center;
@@ -167,6 +164,11 @@ body {
 	border-top: 1px solid white;
 	border-bottom: 1px solid white;
 }
+.popularite:focus,
+.date:focus,
+.titre:focus {
+	background-color: #db8876;
+}
 /*-------------------- MediaCards ----------------------*/
 
 .photograph-porfolio {
@@ -174,7 +176,7 @@ body {
 }
 .photos {
 	display: flex;
-
+	column-gap: 20px;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
@@ -241,8 +243,11 @@ body {
 }
 .fas.fa-heart.emptyHeart.active {
 	display: block;
-	color: #f75814;
-	font-size: 24px;
+	color: cornflowerblue;
+}
+.numberOfLikes.liked {
+	color: cornflowerblue;
+	font-weight: bold;
 }
 
 /* ----------------------Lightbox--------------------------------*/
@@ -261,6 +266,8 @@ body {
 	background-color: rgba(252, 252, 252, 0.9);
 	overflow: auto;
 	animation: lightboxAnimation 0.5s;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 .fa-close,
 .fa-chevron-left,
@@ -488,6 +495,9 @@ form textarea:focus {
 		font-size: 15px;
 		height: 60px;
 	}
+	.modal header h1 {
+		font-size: 30px;
+	}
 	.photograph-header img {
 		min-height: 150px;
 		min-width: 150px;
@@ -514,11 +524,6 @@ form textarea:focus {
 	.photos {
 		justify-content: center;
 	}
-	.modal {
-		width: 65%;
-		left: 20%;
-		padding: 20px;
-	}
 }
 @media screen and (max-width: 1016px) {
 	.contact-userInfo h2 {
@@ -534,7 +539,9 @@ form textarea:focus {
 	}
 }
 @media screen and (max-width: 1225px) {
-	.modal header h1 {
-		font-size: 40px;
+	.modal {
+		width: 60%;
+		left: 20%;
+		padding: 20px;
 	}
 }

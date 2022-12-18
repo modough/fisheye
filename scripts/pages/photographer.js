@@ -10,7 +10,13 @@ import createElementDOM from '../utils/genericDom';
 
 // Retrieving data from json file
 async function getPhotographers() {
-	return fetchData('data/photographers.json');
+	const res = await fetchData('data/photographers.json');
+	const photographers = res.photographers;
+	const media = res.media;
+	return {
+		photographers,
+		media,
+	};
 }
 
 // function for retrieving page id and comparing with data id

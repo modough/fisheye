@@ -97,6 +97,11 @@ export const handleClickOnMedia = () => {
 			close();
 		}
 	});
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape') {
+			close();
+		}
+	});
 	rightChevron.addEventListener('keydown', (e) => {
 		if (e.key === 'Enter') {
 			next();

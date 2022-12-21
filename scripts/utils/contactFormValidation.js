@@ -123,6 +123,13 @@ export const submitForm = (photographer) => {
 				main.style.display = 'block';
 				main.style.opacity = '1';
 			});
+			document.addEventListener('keydown', (e) => {
+				if (e.key === 'Enter') {
+					validationMessage.style.display = 'none';
+					main.style.display = 'block';
+					main.style.opacity = '1';
+				}
+			});
 		}
 	});
 };

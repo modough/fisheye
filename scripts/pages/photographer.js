@@ -23,14 +23,18 @@ async function getPhotographers() {
 const params = new URL(location.href).searchParams;
 const photographerId = params.get('id');
 const { photographers, media } = await getPhotographers();
+
+//display images and videos by comparing their id's with the query id
 const medias = await media.filter(
 	(media) => media.photographerId === parseInt(photographerId)
 );
 
-//display photographer contact information by comparing his id and the query id
+//display photographer contact information by comparing his id with the query id
 const foundPhotographer = photographers.find(
 	(data) => data.id === parseInt(photographerId)
 );
+
+//display contact infos at photographer page header
 const displayPhotographPageHeader = () => {
 	if (photographerId) {
 		const article = document.querySelector('.photograph-header');
@@ -40,7 +44,7 @@ const displayPhotographPageHeader = () => {
 	}
 };
 
-// display mediacards
+// display mediacCards
 export function displayPhotographPageMedia(medias) {
 	const parentDiv = document.querySelector('#photos');
 	parentDiv.innerHTML = '';
@@ -59,12 +63,18 @@ export function displayLightbox(medias) {
 	lightboxDiv.innerHTML = '';
 	const closeBtn = createElementDOM('i', '', 'fa fa-close', [
 		{ key: 'tabindex', value: '1' },
+		{ key: 'aria-label', value: 'Fermer la lightbox' },
+		{ key: 'role', value: 'button' },
 	]);
 	const leftChevron = createElementDOM('i', '', 'fa fa-chevron-left', [
 		{ key: 'tabindex', value: '2' },
+		{ key: 'aria-label', value: 'Media précédent' },
+		{ key: 'role', value: 'button' },
 	]);
 	const rightChevron = createElementDOM('i', '', 'fas fa-chevron-right', [
 		{ key: 'tabindex', value: '3' },
+		{ key: 'aria-label', value: 'Media suivant' },
+		{ key: 'role', value: 'button' },
 	]);
 
 	lightboxDiv.appendChild(closeBtn);
@@ -78,7 +88,7 @@ export function displayLightbox(medias) {
 	});
 }
 
-// init all
+// init all functions
 const init = async () => {
 	displayPhotographPageHeader();
 	displayPhotographPageMedia(medias);

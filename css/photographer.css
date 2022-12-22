@@ -548,4 +548,14 @@ form textarea:focus {
 		left: 20%;
 		padding: 20px;
 	}
+	.lightbox.active {
+		padding: 0;
+	}
+	.lightbox_medias {
+		width: fit-content;
+	}
+	.lightboxVideo,
+	.lightboxImg {
+		width: 100%;
+	}
 }

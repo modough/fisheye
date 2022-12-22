@@ -27,8 +27,13 @@ export const mediaFactory = (data) => {
 		]);
 		const infoDiv = createElementDOM('div', '', 'bottomCard');
 		const titre = createElementDOM('h2', `${title}`);
-		const likeSpan = createElementDOM('span', '', 'likeSpan');
-		const like = createElementDOM('p', `${likes}`, 'numberOfLikes');
+		const likeSpan = createElementDOM('span', '', 'likeSpan', [
+			{ key: 'tabindex', value: '0' },
+			{ key: 'aria-label', value: `${likes} nombre de likes` },
+		]);
+		const like = createElementDOM('p', `${likes}`, 'numberOfLikes', [
+			{ key: 'aria-label', value: `${likes} nombre de likes` },
+		]);
 		const heart = createElementDOM('i', '', 'fas fa-heart heartInCard');
 		const emptyHeart = createElementDOM('i', '', 'fas fa-heart emptyHeart');
 		mediaDiv.appendChild(playIcon);

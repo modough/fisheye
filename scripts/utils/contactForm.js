@@ -37,4 +37,9 @@ export default function contactForm() {
 			closeFunction();
 		}
 	});
+	closeModalButton.addEventListener('keydown', (e) => {
+		if (e.key === 'Enter') {
+			closeFunction();
+		}
+	});
 }

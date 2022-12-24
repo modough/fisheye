@@ -2,6 +2,7 @@
 @import url('style.css');
 
 body {
+	font-family: DM Sans, sans-serif;
 	position: relative;
 }
 .logo {
@@ -97,8 +98,8 @@ body {
 	display: flex;
 	align-items: center;
 
-	width: 170px;
-	height: 60px;
+	width: 100px;
+	height: 43px;
 	padding: 10px 30px;
 	background-color: #901c1c;
 	color: #fafafa;
@@ -444,7 +445,7 @@ form textarea:focus {
 /*---------------------- bottom sticker for daily price and total likes --------------*/
 .priceAndLikes {
 	width: 400px;
-	height: 89px;
+	height: 0;
 	border-radius: 5px;
 	background-color: #db8876;
 	position: fixed;
@@ -474,10 +475,6 @@ form textarea:focus {
 
 /*------------------- Media queries -------------------*/
 @media screen and (max-width: 768px) {
-	.logo {
-		height: 40px;
-	}
-
 	.photograph-header .headerCardDiv {
 		padding: 20px;
 		flex-direction: column;
